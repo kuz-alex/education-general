@@ -1,0 +1,123 @@
+This note contains the knowledge about how to create a list of pointers to
+different types.
+
+`*pointersArrayAddr` - this is just a void pointer, it doens't really point
+anywhere. We cannot dereference it.
+
+We must cast it to some defined pointer first.
+
+`(int *) pointersArrayAddr` - now we have the array address casted as a pointer
+to int. Which is wrong.
+
+`(int **) pointersArrayAddr` - now it's a pointer to int casted as a pointer to
+int, which is correct.
+
+`*(int **) pointersArrayAddr`  - dereference it, and we get the pointer to int.
+
+(int **) says that we have a pointer to an int pointer. It's correct, we have
+arrayStart pointer which points exactly at the `int` pointer.
+    * Is this correct: (int **) says that we have a pointer to an int pointer.
+    * But working with the void pointers, isn't the first pointer (arrayStart)
+    * is void? Which pointer star takes precedence, second or first?
+
+https://cdecl.org/ website gives the following interpretation:
+    (int **) startArr
+    =
+    cast startArr into pointer to pointer to int
+
+So when we do
+    `int **test3 = (int **) pointersArrayAddr + 2;`
+we're saying: "get a pointer to a pointer to int" from the position
+`pointersArrayAddr + 2 * sizeof(ptr)`. My assumption is that C understands that
+it's a pointer to a pointer and when doing pointer arithmetic it uses 1-byte
+offset (pointer size).
+
+https://www.geeksforgeeks.org/void-pointer-c-cpp/
+
+
+TODO ANKI QUESTION:
+________________________________________________
+    // This works.
+    char **test2 = (char **) (char*) pointersArrayAddr + 1;
+
+    // This doesn't work.
+    char *test2 = *(char **) (char*) pointersArrayAddr + 1;
+
+    // But we still can do this and it works.
+    char *test2 = *((char **) (char*) pointersArrayAddr + 1);
+
+    TODO: An anki question, demonstration that we cannot dereference the
+    pointer this way. Basically I should be aware that `*(char **)`
+    dereferences the different thing. I don't understand what exactly does it
+    dereference.
+________________________________________________
+
+________________________________________________
+#2
+    We have an array of integers, we need to create a pointer, which will be
+    going over ints with every increment.
+
+    We need to cast the pointer to an `int*`, which will make it go over 4
+    bytes (sizeof(int)), when doing `++ptr`.
+
+    Example:
+    If we need to go over a list on integers, the following pointer will work:
+
+    ```
+    const void* movieFile; // 
+
+    (int*) startIntegerListAddr = (int*) movieFile + 1;
+    ++startIntegerListAddr; // moves the pointer by 4 bytes.
+    ```
+________________________________________________
+
+________________________________________________
+#3
+How to express:
+I need a char* to a movieFile:
+    `char* ptr = **(char***) movieFile;` - ?
+
+Having a char* pointer to movieFile, I can use offset to the the particular
+movie location:
+    `char *particularMovieAddr = (char*) movieFile + 2230;`
+
+________________________________________________
+
+
+=== [COMPLETED] Getting the movie cast ===
+    [x] Found the movie for which the function fails.
+    [x] From the movie offset, determine the number of bytes to go over in
+        order to reach the cast.
+        [x] Add a condition to determine the padding
+            `(movieTitleLen + movieYearLen) % 4 == 0
+                ? "no padding"
+                : "two zero bytes of padding"
+            `
+        [x] Refactor getting the film struct from the address.
+
+=== [IN PROGRESS] Implementing search ===
+[ ] Understand the task
+                             -> Actor #1
+                 -> Movie #1 -> Actor #2
+                             -> Actor #3
+
+    Bruce Willis -> Movie #2 ->
+                 -> Movie #3
+
+
+List of partial paths: ["Movie #1 - Actor #1", "Movie #1 - Actor #2", "Movie #1 - Actor #3"]
+[ ] But with not goign over the full cast
+    ```
+    for (int j = 0; j < players.size() && visitedActors.count(players[j]) == 0; ++j) {
+    ```
+
+    For some reason this loop goes only over a small amount of cast.
+
+    ```
+    for (int j = 0; j < players.size(); ++j) {
+        if (visitedActors.count(players[j]) != 0) {
+            continue;
+        }
+    ```
+    This fixes it, but why exactly?
+

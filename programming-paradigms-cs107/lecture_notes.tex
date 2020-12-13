@@ -1,0 +1,439 @@
+\input{/home/d1r3ct/.config/preamble.tex}
+
+\title{Programming Paradigms, lecture notes}
+\begin{document}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Lectures 1-6}
+
+\begin{lstlisting}
+short s = 2^16 + 2^3 + 2^0
+int i = s;
+\end{lstlisting}
+
+TODO:
+    Determine what happens when we store int in short and the most significant bit
+    in short happens to be 1 (thus negative number).
+
+Technically, when assigning a short (smaller size) to int, it replicates the
+most significant bit (sign extent) and fills the free bytes with that bit (so
+when assigning short to "-1" to int, it will still give "1111 1111" * 4).
+
+\subsection{How to represent float numbers in binary}
+
+Float gives 32 bits
+
+$2^30$
+
+We sacrifice the least significant bits to represent the fractional part.
+
+The actual way of representing it:
+
+4 byte figure:
+
+first sign bit, then come 8 bits (unsigned int), and the remaining 23 bits is
+for fractional part.
+
+We can represent a lot of numbers by dividing them by 2.
+$7.0 * 2^0$
+$3.5 * 2^1$     // those are all 7
+$1.75 * 2^2$
+
+
+\textbf{What happens when you assign a float to an int?}
+
+If you store int in float, it's very wacky, because it has to get the number
+from the int and create a new binary pattern.
+
+For float, $5 \rightarrow 5.0 \rightarrow 1.25 * 2^2$
+
+We can try doing it without evaluating number. TODO: add explanation.
+
+\begin{lstlisting}
+float f = 7.0;
+shoft s = *(short*) & f;
+\end{lstlisting}
+
+Float stores 7.0, second line says "I don't care what |f| is, doesn't matter
+that it normally represented as a float". It replicated bit pattern in the
+first 2 bytes of float.
+
+Ampersand is always the address of the lowest byte.
+
+\subsection{Structs and arrays}
+
+Try the trick with the struct and addresses |((fraction *)&(pi.denum))->num = 12|
+
+We reinterpret the address. That's the key.
+
+Arrays
+
+Initiailzie array - stores address of the first member. Raw arrays have no boundaries.
+
+\begin{lstlisting}
+int array[10];
+
+array[10] <- goes forward 10 bytes from the start of the array.
+array[25] <- goes forward 25 bytes from the start of the array.
+\end{lstlisting}
+
+|int array[10]| - is just basically the documentation for the array, we don't
+have boundaries. Technically, raw arrays just reserve the specified memory.
+
+It even works on negative addresses array[-25], puts the address 25 bytes
+before starting location.
+
+Rules:
+\begin{itemize}
+    \item |array -> &array[0]|
+    \item |array + k -> &array[k]|
+    \item |*array -> array[0]|
+    \item |*(array + k) -> array[k]|, k - is the actual number of bytes (determined by the type system).
+\end{itemize}
+
+We can trick and substitute the type system and change how it jumps, TODO: TRY IT:
+\begin{lstlisting}
+    ((short *) arr)[6] = 2
+    cout << arr[3] << endl|
+\end{lstlisting}
+
+
+Array of structs
+
+\begin{lstlisting}
+struct student {
+    char *name;
+    char suid[8];
+    int numUnits;
+}
+\end{lstlisting}
+
+Memory for struct looks like:
+\begin{verbatim}
+[       ]
+[ | | | ]
+[ | | | ]
+[       ]
+\end{verbatim}
+
+`strcpy` with the wrong address
+
+Why |strcpy(pupils[3].name, "123456")| writes it over other fields?
+
+Because field `name` contains the address, we're not evaluating the address of
+the name itself. Previously we did:
+
+\begin{lstlisting}
+pupils[2].name = pupils[0].suid + 6;
+\end{lstlisting}
+
+How structs are laid out memory wise?
+
+\section{Lectures 7-12}
+
+\subsection{Stack and lists of strings}%
+\label{sub:stack_and_lists_of_strings}
+\textit{Lecture 7.}
+
+Transfering ownership of dynamically allocated strings. How would you do that
+with the Stack and a list of strings as an example?
+
+Why do we pass the temporary values in the loop with an ampersand?
+
+What if `stackDispose` is called, but there are some data in the stack, which
+stack still owns (hint, we need to upgrade the `StackNew` function, what
+additional argument should it take?)?
+
+How does `free` know how much space a string takes when we only pass the `(char
+*)`?
+
+In which curcumstances do we want to use `memmove` over `memcpy`?
+
+How does pointer subtraction work on a different type? How to make it behave
+like a regular subtraction.
+
+Functions that are used aggresively in the assignment 3:
+\begin{itemize}
+    \item qsort
+    \item bsearch
+    \item memcpy
+    \item memmove
+    \item malloc
+    \item realloc
+    \item free
+\end{itemize}
+
+Explain a RAM model, what are the two main segments? Which are controlled by a
+hardware/software? What happens in RAM when you call `malloc(40)`, when `realloc()`?
+
+\subsection{Computer Architecture and heap management}%
+\label{sub:computer_architecture_and_heap_management}
+
+\textit{Lecture 8.}
+
+Inside a heap, how is memory laid out? What is one node of memory? When we try
+to allocate some memory for a list of ints, what data it includes in addition
+to the requested n-bytes of memory?
+
+What happens if you try to free memory in this way: |free(list + 60)|?
+
+What is the general implementation of the heap and the heap manager (software
+implementation of the heap)?
+
+What is activation record or a stack frame of a function?
+
+When you're calling multiple functions, let's say $A, B, C$, how do stack
+frames get placed on the stack? How it behaves when you call a function
+multiple times, where it places the allocated stack frame?
+
+\subsection{Assembly and hardware level}%
+\label{sub:assembly_and_hardware_level}
+
+\textit{Lecture 9.}
+
+Explain how we're accessing RAM from the assembly code. How we're operating
+addresses within RAM?
+
+How would the following code look in the assembler and how its activation frame
+looks like:
+\begin{lstlisting}
+int i = 0;
+short s1;
+short s2;
+
+i = 200;    // To assembler
+s1 = i;     // To assembler
+s2 = i + 2; // To assembler
+\end{lstlisting}
+
+How much bytes/bits does an assembly code instruction contains? Describe
+possible the parts of an instruction.
+
+What does the following code do, what's the order of execution? How it
+translates to the assembly code?
+\begin{lstlisting}
+struct fraction {
+    int num;
+    int denum;
+};
+
+struct fraction pi;
+
+((struct fraction *) &pi.denum)->denum = 451;
+\end{lstlisting}
+
+\textit{Lecture 10.}
+
+What is the activation record for the following function. Is arguments on the
+stack placed arbitrary (note there are some additional info between the
+arguments and the scope variables)?
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{activation_record}
+    \caption{Structure of an activation record}%
+    \label{fig:activation_record}
+\end{figure}
+
+Explain what c-function ``main" does on execution in the exact order:
+\begin{itemize}
+    \item  Makes space for it's local variables. It accompished that by
+        expanding the activation record (increasing the size of the record by
+        incrementing, e.g |SP = SP + 4|).
+    \item Main is called with partial activation record, it has to complete
+        activation method.
+\end{itemize}
+
+What is the purpose of the special registers:
+\begin{itemize}
+    \item PC
+    \item SP
+    \item RV
+\end{itemize}
+
+Why can't the |main| function allocate all the space for the full activation
+record, including the local variables in any function called by |main|?
+
+\begin{lstlisting}
+void foo(int bar, int *baz)
+{
+    char snink[4];
+    struct *why;
+}
+\end{lstlisting}
+
+How to determine the number we need to increment the PC counter for?
+
+Explain what assembly code looks like for the following function:
+
+\begin{lstlisting}
+static int Add(int one, int two)
+{
+    int temp, sum;
+    sum = one + two;
+    return sum;
+}
+\end{lstlisting}
+
+\textit{Lecture 11.}
+What happens when use execute \verb!RET! assembly instruction? How it utilizes
+PC \& SP registers?
+
+Explain key moments of how the C function |swap| works. If we use the
+references from C++, how does it work then? What exactly are the references?
+How does assembly code differ from the C version of the function?
+
+What is the operation that we can do on pointers, but can't on references? Why
+would we need pointers in C++?
+
+Is there any difference between structs and classes for a C++ compiler? Does
+the assembly code for each of them differ?
+
+How C++ classes have an access to the scope? Is the activation record
+different? How does activation record look?
+
+\subsection{Pre-processing and compilation}%
+\label{sub:pre_processing_and_compilation}
+
+What is purpose of |#define| for the pre-processor?
+
+\textit{Lecture 12.}
+
+When using the macros like: |int max = MAX(fib(in), fib(4180))| , what are the
+disadvantages of it over the simple function? What is the bug in the line:
+\begin{lstlisting}
+int larger = MAX(m++, n++);
+\end{lstlisting}
+
+Angle brackets versus double quotes?
+\begin{lstlisting}
+#include <stdio.h>
+#include "vector.h"
+\end{lstlisting}
+
+What is the purpose of the \verb!.h! files?
+
+Overview of how pre-processing works, what type of file it produces? How to
+make GCC to produce a pre-processed file, not the actual binary?  What is the
+``link`` phase in the process of compilation?
+
+What if we use functions from the standard library but don't include the
+library itself?
+
+
+\textit{Lecture 13.}
+If we're redefine a function prototype and call let's say ``strlen" function
+with 2 parameters, the linker phase is still going to allocate the space for
+all the parameters, but the actual function implementation will only know about
+the first one.
+
+Why dereferencing of null pointer causes segfaults? What ``segments" are there?
+
+Bus errors, explain why does integers start at a multiple of 4? Shorts at a
+multiple of 2? What might cause a bus error?
+
+\textit{Lecture 14.}
+Using an example with array overflow, show how we can inadvertently change the
+\textit{Saved PC} and cause infinite recursion.
+
+How can we do an argument overload in a function like printf?
+
+Each process gets its own virtual memory that proxied by the daemon running in
+a background. Two programs cannot obtain the same block of memory in their
+virtual variants. Several processes are running at the same time and each of
+them gets their own heap, stack and code segment in its own virtual space.
+
+\textit{Lecture 15.}
+
+\section{Concurrency and multi-threading.}
+
+\textbf{Semaphores}
+Semaphor allows us to do stuff concurrently.
+There are `SemaphorWait` and `SemaphorSignal` calls. if the semaphor is not
+available, then the thread will block at the point of the `SemaphoreWait`. When
+it's available, a thread will decrement the semaphor value and continue the
+execution without stopping at `SemaphoreWait`.
+
+Explain how binary semaphores work in principle:
+
+Binary semaphore can be thought of as a lock that allows only one thread into a
+critical region.
+
+`Semaphore numAllowedToEat(4);`
+
+It's like the number of shopping carts that are available at the store.
+
+\section{Scheme The Programming Language}%
+\label{sec:scheme_the_programming_language}
+\textit{Lecture 19.}
+
+(8:32) Functional paradigm, what it cares about.
+
+(12:46) Celsius $\longrightarrow$ Fahrenheit function definition.
+
+(20:00) Lists and nested lists.
+
+(30:20) \verb!car! - ``first", \verb!cdr! - ``rest".
+
+(41:30) Defining a function with side-effects. It's a side-effect
+in a global environment, we're adding a keyword "ADD" to a map in a global
+environment, that is associated with a function that adds x and y. All the
+other functions like \verb!cdr! or \verb!car! also exist in that map, this map
+is pre-populated. In scheme we're trying to program without side-effects.
+
+(50:00) Implementing a function `sum-of` with a list as an
+argument using recursion.
+
+\subsection{More scheme examples.}%
+\textit{Lecture 20.}
+
+(5:00) Type-mismatches are detected at runtime. How
+compilation/translation in scheme does very little and no
+type-checking.
+
+(28:00) \verb!cons! function.
+
+(40:00) What happens in memory when calling a function. Functions
+are stored in memory just like other things, instructions, code
+is stored in memory. Lambda functions, how we're able to pass the
+function itself (code, not the pointer) to \verb!sorted!.
+
+\textit{Lecture 20.}
+
+\textit{Lecture 21.}
+
+\verb!## [15:00]!
+
+Passing more than 1 argument to a map function.
+\begin{verbatim}
+> (map + '(1 2) '(3 4) '(6 10))
+(10 16)
+\end{verbatim}
+Implementation of a custom unary map.
+\begin{verbatim}
+(define (my-unary-map fn seq)
+    (if (null? seq) '()
+        (cons (fn (car seq))
+        (my-unary-map fn (cdr seq)))))
+\end{verbatim}
+
+\verb!## [32:10]!
+
+A better way to flatten all the elements in the list.
+Recursive implementation with \verb!append! and
+\verb!map!. Good example to show how \verb!apply! and
+\verb!map! work together.
+
+\verb!## [41:00]!
+
+Lambda function example: \verb!translate!. Anonomous function and
+    scopes.
+
+\textit{Lecture 22.}
+
+Implementation of a \verb!power-set! function.
+
+\end{document}

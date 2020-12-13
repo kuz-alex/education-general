@@ -1,0 +1,1351 @@
+Student 113 takes the machine.
+Student 113 starts debugging.
+Student 114 takes the machine.
+Student 114 starts debugging.
+Student 6 takes the machine.
+Student 6 starts debugging.
+Student 11 takes the machine.
+Student 11 starts debugging.
+Student 5 takes the machine.
+Student 5 starts debugging.
+Student 1 takes the machine.
+Student 1 starts debugging.
+Student 8 takes the machine.
+Student 8 starts debugging.
+Student 4 takes the machine.
+Student 4 starts debugging.
+Student 0 takes the machine.
+Student 0 starts debugging.
+Student 3 takes the machine.
+Student 3 starts debugging.
+Student 7 takes the machine.
+Student 7 starts debugging.
+Student 17 takes the machine.
+Student 17 starts debugging.
+Student 18 takes the machine.
+Student 18 starts debugging.
+Student 19 takes the machine.
+Student 20 takes the machine.
+Student 19 starts debugging.
+Student 20 starts debugging.
+Student 22 takes the machine.
+Student 22 starts debugging.
+Student 24 takes the machine.
+Student 23 takes the machine.
+Student 24 starts debugging.
+Student 23 starts debugging.
+Student 25 takes the machine.
+Student 25 starts debugging.
+Student 13 takes the machine.
+Student 13 starts debugging.
+Student 26 takes the machine.
+Student 26 starts debugging.
+Student 27 takes the machine.
+Student 27 starts debugging.
+Student 21 takes the machine.
+Student 21 starts debugging.
+Student 28 takes the machine.
+Student 28 starts debugging.
+Student 32 takes the machine.
+Student 29 takes the machine.
+Student 32 starts debugging.
+Student 30 takes the machine.
+Student 29 starts debugging.
+Student 30 starts debugging.
+Student 34 takes the machine.
+Student 15 takes the machine.
+Student 31 takes the machine.
+Student 15 starts debugging.
+Student 34 starts debugging.
+Student 31 starts debugging.
+Student 37 takes the machine.
+Student 37 starts debugging.
+Student 36 takes the machine.
+Student 36 starts debugging.
+Student 38 takes the machine.
+Student 38 starts debugging.
+Student 33 takes the machine.
+Student 33 starts debugging.
+Student 40 takes the machine.
+Student 40 starts debugging.
+Student 42 takes the machine.
+Student 42 starts debugging.
+Student 41 takes the machine.
+Student 41 starts debugging.
+Student 44 takes the machine.
+Student 44 starts debugging.
+Student 43 takes the machine.
+Student 43 starts debugging.
+Student 45 takes the machine.
+Student 45 starts debugging.
+	TA "TA 1" takes a student.
+	TA 1 has examined the work, found 7 bugs.
+	TA 1 gets assigned to a student "Student 26"
+	TA "TA 3" takes a student.
+	TA 3 has examined the work, found 4 bugs.
+	TA 3 gets assigned to a student "Student 31"
+	TA "TA 2" takes a student.
+	TA 2 has examined the work, found 0 bugs.
+	TA 2 gets assigned to a student "Student 24"
+	TA "TA 0" takes a student.
+	TA 0 has examined the work, found 4 bugs.
+	TA 0 gets assigned to a student "Student 7"
+	TA 3 starts reading email.
+Student 26 gets a result, he has 0 bugs.
+	Student 26 rejoiced!
+Student 26 exits.
+Student 46 takes the machine.
+Student 46 starts debugging.
+	TA 0 starts reading email.
+Student 31 gets a result, he has 4 bugs.
+Student 31 starts debugging.
+	TA 1 starts reading email.
+Student 24 gets a result, he has 0 bugs.
+	Student 24 rejoiced!
+Student 24 exits.
+Student 35 takes the machine.
+Student 35 starts debugging.
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 7 bugs.
+	TA 5 gets assigned to a student "Student 23"
+	TA "TA 6" takes a student.
+	TA 6 has examined the work, found 6 bugs.
+	TA 6 gets assigned to a student "Student 17"
+	TA 2 starts reading email.
+Student 7 gets a result, he has 4 bugs.
+Student 7 starts debugging.
+	TA 5 starts reading email.
+Student 23 gets a result, he has 7 bugs.
+Student 23 exits.
+Student 47 takes the machine.
+Student 47 starts debugging.
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 4 bugs.
+	TA 7 gets assigned to a student "Student 38"
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 6 bugs.
+	TA 8 gets assigned to a student "Student 33"
+	TA 8 starts reading email.
+Student 17 gets a result, he has 0 bugs.
+	Student 17 rejoiced!
+Student 17 exits.
+Student 49 takes the machine.
+Student 49 starts debugging.
+	TA "TA 9" takes a student.
+	TA 9 has examined the work, found 4 bugs.
+	TA 9 gets assigned to a student "Student 42"
+	TA 7 starts reading email.
+Student 38 gets a result, he has 4 bugs.
+Student 38 starts debugging.
+	TA 6 starts reading email.
+Student 33 gets a result, he has 6 bugs.
+Student 33 exits.
+Student 51 takes the machine.
+Student 51 starts debugging.
+	TA "TA 10" takes a student.
+	TA 10 has examined the work, found 0 bugs.
+	TA 10 gets assigned to a student "Student 29"
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 1 bugs.
+	TA 11 gets assigned to a student "Student 7"
+	TA 10 starts reading email.
+Student 42 gets a result, he has 0 bugs.
+	Student 42 rejoiced!
+Student 42 exits.
+Student 50 takes the machine.
+Student 50 starts debugging.
+	TA 9 starts reading email.
+Student 29 gets a result, he has 0 bugs.
+	Student 29 rejoiced!
+Student 29 exits.
+Student 52 takes the machine.
+Student 52 starts debugging.
+	TA "TA 12" takes a student.
+	TA 12 has examined the work, found 4 bugs.
+	TA 12 gets assigned to a student "Student 32"
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 3 bugs.
+	TA 13 gets assigned to a student "Student 45"
+	TA "TA 14" takes a student.
+	TA 14 has examined the work, found 2 bugs.
+	TA 14 gets assigned to a student "Student 37"
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 3 bugs.
+	TA 4 gets assigned to a student "Student 0"
+	TA 11 starts reading email.
+Student 7 gets a result, he has 1 bugs.
+Student 7 starts debugging.
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 9 bugs.
+	TA 16 gets assigned to a student "Student 50"
+	TA "TA 17" takes a student.
+	TA 17 has examined the work, found 9 bugs.
+	TA 17 gets assigned to a student "Student 27"
+	TA 4 starts reading email.
+Student 32 gets a result, he has 0 bugs.
+	Student 32 rejoiced!
+Student 32 exits.
+Student 48 takes the machine.
+Student 48 starts debugging.
+	TA "TA 18" takes a student.
+	TA 18 has examined the work, found 5 bugs.
+	TA 18 gets assigned to a student "Student 6"
+	TA 17 starts reading email.
+Student 45 gets a result, he has 0 bugs.
+	Student 45 rejoiced!
+Student 45 exits.
+Student 53 takes the machine.
+Student 53 starts debugging.
+	TA 13 starts reading email.
+Student 37 gets a result, he has 0 bugs.
+	Student 37 rejoiced!
+Student 37 exits.
+Student 57 takes the machine.
+Student 57 starts debugging.
+	TA 12 starts reading email.
+Student 0 gets a result, he has 3 bugs.
+Student 0 starts debugging.
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 4 bugs.
+	TA 19 gets assigned to a student "Student 114"
+	TA "TA 15" takes a student.
+	TA 15 has examined the work, found 7 bugs.
+	TA 15 gets assigned to a student "Student 28"
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 5 bugs.
+	TA 8 gets assigned to a student "Student 36"
+	TA 18 starts reading email.
+Student 50 gets a result, he has 0 bugs.
+	Student 50 rejoiced!
+Student 50 exits.
+Student 55 takes the machine.
+Student 55 starts debugging.
+	TA 14 starts reading email.
+Student 27 gets a result, he has 9 bugs.
+Student 27 exits.
+Student 54 takes the machine.
+Student 54 starts debugging.
+	TA 15 starts reading email.
+Student 6 gets a result, he has 5 bugs.
+Student 6 exits.
+Student 58 takes the machine.
+Student 58 starts debugging.
+	TA 19 starts reading email.
+Student 114 gets a result, he has 4 bugs.
+Student 114 starts debugging.
+	TA 16 starts reading email.
+Student 28 gets a result, he has 7 bugs.
+Student 28 exits.
+Student 60 takes the machine.
+Student 60 starts debugging.
+	TA 8 starts reading email.
+Student 36 gets a result, he has 5 bugs.
+Student 36 exits.
+Student 59 takes the machine.
+Student 59 starts debugging.
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 10 bugs.
+	TA 4 gets assigned to a student "Student 51"
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 5 bugs.
+	TA 5 gets assigned to a student "Student 22"
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 10 bugs.
+	TA 13 gets assigned to a student "Student 19"
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 10 bugs.
+	TA 7 gets assigned to a student "Student 55"
+	TA 4 starts reading email.
+Student 51 gets a result, he has 10 bugs.
+Student 51 exits.
+Student 9 takes the machine.
+Student 9 starts debugging.
+	TA 13 starts reading email.
+Student 22 gets a result, he has 7 bugs.
+Student 22 exits.
+Student 61 takes the machine.
+Student 61 starts debugging.
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 10 bugs.
+	TA 4 gets assigned to a student "Student 5"
+	TA 7 starts reading email.
+Student 19 gets a result, he has 10 bugs.
+Student 19 exits.
+Student 62 takes the machine.
+Student 62 starts debugging.
+	TA 5 starts reading email.
+Student 55 gets a result, he has 10 bugs.
+Student 55 exits.
+Student 10 takes the machine.
+Student 10 starts debugging.
+	TA "TA 17" takes a student.
+	TA 17 has examined the work, found 6 bugs.
+	TA 17 gets assigned to a student "Student 52"
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 10 bugs.
+	TA 5 gets assigned to a student "Student 60"
+	TA 5 starts reading email.
+Student 5 gets a result, he has 10 bugs.
+Student 5 exits.
+Student 64 takes the machine.
+Student 64 starts debugging.
+	TA 17 starts reading email.
+Student 52 gets a result, he has 6 bugs.
+Student 52 exits.
+Student 66 takes the machine.
+Student 66 starts debugging.
+	TA "TA 1" takes a student.
+	TA 1 has examined the work, found 2 bugs.
+	TA 1 gets assigned to a student "Student 57"
+	TA 1 starts reading email.
+Student 60 gets a result, he has 10 bugs.
+Student 60 exits.
+Student 12 takes the machine.
+Student 12 starts debugging.
+	TA 4 starts reading email.
+Student 57 gets a result, he has 2 bugs.
+Student 57 starts debugging.
+	TA "TA 2" takes a student.
+	TA 2 has examined the work, found 5 bugs.
+	TA 2 gets assigned to a student "Student 62"
+	TA "TA 9" takes a student.
+	TA 9 has examined the work, found 7 bugs.
+	TA 9 gets assigned to a student "Student 43"
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 10 bugs.
+	TA 16 gets assigned to a student "Student 10"
+	TA 16 starts reading email.
+Student 62 gets a result, he has 0 bugs.
+	Student 62 rejoiced!
+Student 62 exits.
+Student 69 takes the machine.
+Student 69 starts debugging.
+	TA 9 starts reading email.
+Student 43 gets a result, he has 7 bugs.
+Student 43 exits.
+Student 67 takes the machine.
+Student 67 starts debugging.
+	TA "TA 1" takes a student.
+	TA 1 has examined the work, found 3 bugs.
+	TA 1 gets assigned to a student "Student 18"
+	TA 2 starts reading email.
+Student 10 gets a result, he has 10 bugs.
+Student 10 exits.
+Student 16 takes the machine.
+Student 16 starts debugging.
+	TA "TA 12" takes a student.
+	TA 12 has examined the work, found 5 bugs.
+	TA 12 gets assigned to a student "Student 13"
+	TA 12 starts reading email.
+Student 18 gets a result, he has 2 bugs.
+Student 18 starts debugging.
+	TA 1 starts reading email.
+Student 13 gets a result, he has 5 bugs.
+Student 13 exits.
+Student 70 takes the machine.
+Student 70 starts debugging.
+	TA "TA 1" takes a student.
+	TA 1 has examined the work, found 2 bugs.
+	TA 1 gets assigned to a student "Student 49"
+	TA "TA 14" takes a student.
+	TA 14 has examined the work, found 9 bugs.
+	TA 14 gets assigned to a student "Student 15"
+	TA "TA 0" takes a student.
+	TA 0 has examined the work, found 7 bugs.
+	TA 0 gets assigned to a student "Student 34"
+	TA 1 starts reading email.
+Student 49 gets a result, he has 2 bugs.
+Student 49 starts debugging.
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 3 bugs.
+	TA 13 gets assigned to a student "Student 30"
+	TA "TA 3" takes a student.
+	TA 3 has examined the work, found 8 bugs.
+	TA 3 gets assigned to a student "Student 46"
+	TA 14 starts reading email.
+Student 15 gets a result, he has 9 bugs.
+Student 15 exits.
+Student 72 takes the machine.
+Student 72 starts debugging.
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 0 bugs.
+	TA 16 gets assigned to a student "Student 0"
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 8 bugs.
+	TA 7 gets assigned to a student "Student 44"
+	TA 3 starts reading email.
+Student 34 gets a result, he has 4 bugs.
+Student 34 starts debugging.
+	TA 0 starts reading email.
+Student 30 gets a result, he has 10 bugs.
+Student 30 exits.
+Student 65 takes the machine.
+Student 65 starts debugging.
+	TA 7 starts reading email.
+Student 46 gets a result, he has 8 bugs.
+Student 46 exits.
+Student 73 takes the machine.
+Student 73 starts debugging.
+	TA 16 starts reading email.
+Student 0 gets a result, he has 0 bugs.
+	Student 0 rejoiced!
+Student 0 exits.
+Student 75 takes the machine.
+Student 75 starts debugging.
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 10 bugs.
+	TA 4 gets assigned to a student "Student 25"
+	TA 13 starts reading email.
+Student 44 gets a result, he has 8 bugs.
+Student 44 exits.
+Student 68 takes the machine.
+Student 68 starts debugging.
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 4 bugs.
+	TA 11 gets assigned to a student "Student 40"
+	TA "TA 10" takes a student.
+	TA 10 has examined the work, found 6 bugs.
+	TA 10 gets assigned to a student "Student 1"
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 1 bugs.
+	TA 7 gets assigned to a student "Student 113"
+	TA 4 starts reading email.
+Student 25 gets a result, he has 10 bugs.
+Student 25 exits.
+Student 76 takes the machine.
+Student 76 starts debugging.
+	TA "TA 6" takes a student.
+	TA 6 has examined the work, found 4 bugs.
+	TA 6 gets assigned to a student "Student 114"
+	TA 7 starts reading email.
+Student 40 gets a result, he has 1 bugs.
+Student 40 starts debugging.
+	TA 10 starts reading email.
+Student 1 gets a result, he has 6 bugs.
+Student 1 exits.
+Student 78 takes the machine.
+Student 78 starts debugging.
+	TA 11 starts reading email.
+Student 113 gets a result, he has 1 bugs.
+Student 113 starts debugging.
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 2 bugs.
+	TA 8 gets assigned to a student "Student 11"
+	TA "TA 9" takes a student.
+	TA 9 has examined the work, found 2 bugs.
+	TA 9 gets assigned to a student "Student 3"
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 2 bugs.
+	TA 5 gets assigned to a student "Student 35"
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 1 bugs.
+	TA 19 gets assigned to a student "Student 21"
+	TA 6 starts reading email.
+Student 114 gets a result, he has 4 bugs.
+Student 114 starts debugging.
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 10 bugs.
+	TA 11 gets assigned to a student "Student 4"
+	TA "TA 3" takes a student.
+	TA 3 has examined the work, found 8 bugs.
+	TA 3 gets assigned to a student "Student 8"
+	TA 8 starts reading email.
+Student 11 gets a result, he has 2 bugs.
+Student 11 starts debugging.
+	TA 9 starts reading email.
+Student 3 gets a result, he has 2 bugs.
+Student 3 starts debugging.
+	TA 5 starts reading email.
+Student 35 gets a result, he has 2 bugs.
+Student 35 starts debugging.
+	TA 11 starts reading email.
+Student 21 gets a result, he has 4 bugs.
+Student 21 starts debugging.
+	TA "TA 2" takes a student.
+	TA 2 has examined the work, found 1 bugs.
+	TA 2 gets assigned to a student "Student 20"
+	TA 19 starts reading email.
+Student 4 gets a result, he has 10 bugs.
+Student 4 exits.
+Student 71 takes the machine.
+Student 71 starts debugging.
+	TA 2 starts reading email.
+Student 8 gets a result, he has 8 bugs.
+Student 8 exits.
+Student 81 takes the machine.
+Student 81 starts debugging.
+	TA 3 starts reading email.
+Student 20 gets a result, he has 1 bugs.
+Student 20 starts debugging.
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 2 bugs.
+	TA 7 gets assigned to a student "Student 41"
+	TA "TA 15" takes a student.
+	TA 15 has examined the work, found 8 bugs.
+	TA 15 gets assigned to a student "Student 61"
+	TA "TA 18" takes a student.
+	TA 18 has examined the work, found 10 bugs.
+	TA 18 gets assigned to a student "Student 47"
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 8 bugs.
+	TA 5 gets assigned to a student "Student 16"
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 3 bugs.
+	TA 19 gets assigned to a student "Student 31"
+	TA 19 starts reading email.
+Student 41 gets a result, he has 1 bugs.
+Student 41 starts debugging.
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 5 bugs.
+	TA 8 gets assigned to a student "Student 54"
+	TA 18 starts reading email.
+Student 61 gets a result, he has 7 bugs.
+Student 61 exits.
+Student 74 takes the machine.
+Student 74 starts debugging.
+	TA 15 starts reading email.
+Student 47 gets a result, he has 10 bugs.
+Student 47 exits.
+Student 84 takes the machine.
+Student 84 starts debugging.
+	TA 5 starts reading email.
+Student 16 gets a result, he has 8 bugs.
+Student 16 exits.
+Student 77 takes the machine.
+Student 77 starts debugging.
+	TA 7 starts reading email.
+Student 31 gets a result, he has 3 bugs.
+Student 31 starts debugging.
+	TA 8 starts reading email.
+Student 54 gets a result, he has 5 bugs.
+Student 54 exits.
+Student 85 takes the machine.
+Student 85 starts debugging.
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 9 bugs.
+	TA 4 gets assigned to a student "Student 53"
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 10 bugs.
+	TA 13 gets assigned to a student "Student 38"
+	TA 4 starts reading email.
+Student 53 gets a result, he has 9 bugs.
+Student 53 exits.
+Student 56 takes the machine.
+Student 56 starts debugging.
+	TA "TA 17" takes a student.
+	TA 17 has examined the work, found 9 bugs.
+	TA 17 gets assigned to a student "Student 59"
+	TA 13 starts reading email.
+Student 38 gets a result, he has 10 bugs.
+Student 38 exits.
+Student 80 takes the machine.
+Student 80 starts debugging.
+	TA "TA 12" takes a student.
+	TA 12 has examined the work, found 5 bugs.
+	TA 12 gets assigned to a student "Student 66"
+	TA 17 starts reading email.
+Student 59 gets a result, he has 9 bugs.
+Student 59 exits.
+Student 63 takes the machine.
+Student 63 starts debugging.
+	TA "TA 14" takes a student.
+	TA 14 has examined the work, found 0 bugs.
+	TA 14 gets assigned to a student "Student 7"
+	TA 12 starts reading email.
+Student 66 gets a result, he has 5 bugs.
+Student 66 exits.
+Student 86 takes the machine.
+Student 86 starts debugging.
+	TA 14 starts reading email.
+Student 7 gets a result, he has 0 bugs.
+	Student 7 rejoiced!
+Student 7 exits.
+Student 83 takes the machine.
+Student 83 starts debugging.
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 9 bugs.
+	TA 16 gets assigned to a student "Student 72"
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 4 bugs.
+	TA 8 gets assigned to a student "Student 34"
+	TA 16 starts reading email.
+Student 72 gets a result, he has 9 bugs.
+Student 72 exits.
+Student 88 takes the machine.
+Student 88 starts debugging.
+	TA "TA 14" takes a student.
+	TA 14 has examined the work, found 5 bugs.
+	TA 14 gets assigned to a student "Student 57"
+	TA "TA 3" takes a student.
+	TA 3 has examined the work, found 7 bugs.
+	TA 3 gets assigned to a student "Student 48"
+	TA "TA 6" takes a student.
+	TA 6 has examined the work, found 2 bugs.
+	TA 6 gets assigned to a student "Student 64"
+	TA "TA 1" takes a student.
+	TA 1 has examined the work, found 2 bugs.
+	TA 1 gets assigned to a student "Student 58"
+	TA 8 starts reading email.
+Student 34 gets a result, he has 4 bugs.
+Student 34 starts debugging.
+	TA 14 starts reading email.
+Student 57 gets a result, he has 5 bugs.
+Student 57 exits.
+Student 92 takes the machine.
+Student 92 starts debugging.
+	TA "TA 14" takes a student.
+	TA 14 has examined the work, found 1 bugs.
+	TA 14 gets assigned to a student "Student 18"
+	TA 6 starts reading email.
+Student 48 gets a result, he has 8 bugs.
+Student 48 exits.
+Student 91 takes the machine.
+Student 91 starts debugging.
+	TA 3 starts reading email.
+Student 64 gets a result, he has 2 bugs.
+Student 64 starts debugging.
+	TA 14 starts reading email.
+Student 58 gets a result, he has 2 bugs.
+Student 58 starts debugging.
+	TA "TA 3" takes a student.
+	TA 3 has examined the work, found 2 bugs.
+	TA 3 gets assigned to a student "Student 11"
+	TA 1 starts reading email.
+Student 18 gets a result, he has 1 bugs.
+Student 18 starts debugging.
+	TA "TA 0" takes a student.
+	TA 0 has examined the work, found 9 bugs.
+	TA 0 gets assigned to a student "Student 70"
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 10 bugs.
+	TA 19 gets assigned to a student "Student 49"
+	TA 0 starts reading email.
+Student 11 gets a result, he has 7 bugs.
+Student 11 exits.
+Student 89 takes the machine.
+Student 89 starts debugging.
+	TA 3 starts reading email.
+Student 70 gets a result, he has 9 bugs.
+Student 70 exits.
+Student 87 takes the machine.
+Student 87 starts debugging.
+	TA 19 starts reading email.
+Student 49 gets a result, he has 10 bugs.
+Student 49 exits.
+Student 39 takes the machine.
+Student 39 starts debugging.
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 8 bugs.
+	TA 8 gets assigned to a student "Student 85"
+	TA "TA 1" takes a student.
+	TA 1 has examined the work, found 10 bugs.
+	TA 1 gets assigned to a student "Student 67"
+	TA "TA 10" takes a student.
+	TA 10 has examined the work, found 8 bugs.
+	TA 10 gets assigned to a student "Student 9"
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 7 bugs.
+	TA 19 gets assigned to a student "Student 65"
+	TA 8 starts reading email.
+Student 85 gets a result, he has 8 bugs.
+Student 85 exits.
+Student 93 takes the machine.
+Student 93 starts debugging.
+	TA 10 starts reading email.
+Student 67 gets a result, he has 2 bugs.
+Student 67 starts debugging.
+	TA 19 starts reading email.
+Student 9 gets a result, he has 8 bugs.
+Student 9 exits.
+Student 98 takes the machine.
+Student 98 starts debugging.
+	TA "TA 0" takes a student.
+	TA 0 has examined the work, found 2 bugs.
+	TA 0 gets assigned to a student "Student 69"
+	TA 1 starts reading email.
+Student 65 gets a result, he has 7 bugs.
+Student 65 exits.
+Student 2 takes the machine.
+Student 2 starts debugging.
+	TA "TA 15" takes a student.
+	TA 15 has examined the work, found 10 bugs.
+	TA 15 gets assigned to a student "Student 75"
+	TA 0 starts reading email.
+Student 69 gets a result, he has 2 bugs.
+Student 69 starts debugging.
+	TA "TA 2" takes a student.
+	TA 2 has examined the work, found 5 bugs.
+	TA 2 gets assigned to a student "Student 76"
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 10 bugs.
+	TA 7 gets assigned to a student "Student 40"
+	TA "TA 9" takes a student.
+	TA 9 has examined the work, found 2 bugs.
+	TA 9 gets assigned to a student "Student 12"
+	TA "TA 17" takes a student.
+	TA 17 has examined the work, found 1 bugs.
+	TA 17 gets assigned to a student "Student 68"
+	TA 17 starts reading email.
+Student 75 gets a result, he has 8 bugs.
+Student 75 exits.
+Student 94 takes the machine.
+Student 94 starts debugging.
+	TA 15 starts reading email.
+Student 76 gets a result, he has 1 bugs.
+Student 76 starts debugging.
+	TA 7 starts reading email.
+Student 40 gets a result, he has 10 bugs.
+Student 40 exits.
+Student 100 takes the machine.
+Student 100 starts debugging.
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 1 bugs.
+	TA 8 gets assigned to a student "Student 84"
+	TA 2 starts reading email.
+Student 12 gets a result, he has 2 bugs.
+Student 12 starts debugging.
+	TA 8 starts reading email.
+Student 68 gets a result, he has 1 bugs.
+Student 68 starts debugging.
+	TA 9 starts reading email.
+Student 84 gets a result, he has 1 bugs.
+Student 84 starts debugging.
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 10 bugs.
+	TA 5 gets assigned to a student "Student 35"
+	TA "TA 18" takes a student.
+	TA 18 has examined the work, found 6 bugs.
+	TA 18 gets assigned to a student "Student 3"
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 8 bugs.
+	TA 11 gets assigned to a student "Student 77"
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 2 bugs.
+	TA 4 gets assigned to a student "Student 92"
+	TA 5 starts reading email.
+Student 35 gets a result, he has 10 bugs.
+Student 35 exits.
+Student 101 takes the machine.
+Student 101 starts debugging.
+	TA 18 starts reading email.
+Student 3 gets a result, he has 6 bugs.
+Student 3 exits.
+Student 95 takes the machine.
+Student 95 starts debugging.
+	TA "TA 6" takes a student.
+	TA 6 has examined the work, found 7 bugs.
+	TA 6 gets assigned to a student "Student 113"
+	TA 11 starts reading email.
+Student 77 gets a result, he has 8 bugs.
+Student 77 exits.
+Student 106 takes the machine.
+Student 106 starts debugging.
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 5 bugs.
+	TA 8 gets assigned to a student "Student 71"
+	TA "TA 3" takes a student.
+	TA 3 has examined the work, found 5 bugs.
+	TA 3 gets assigned to a student "Student 63"
+	TA 4 starts reading email.
+Student 92 gets a result, he has 2 bugs.
+Student 92 starts debugging.
+	TA "TA 0" takes a student.
+	TA 0 has examined the work, found 10 bugs.
+	TA 0 gets assigned to a student "Student 41"
+	TA 6 starts reading email.
+Student 113 gets a result, he has 7 bugs.
+Student 113 exits.
+Student 96 takes the machine.
+Student 96 starts debugging.
+	TA "TA 10" takes a student.
+	TA 10 has examined the work, found 10 bugs.
+	TA 10 gets assigned to a student "Student 114"
+	TA 10 starts reading email.
+Student 71 gets a result, he has 1 bugs.
+Student 71 starts debugging.
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 8 bugs.
+	TA 13 gets assigned to a student "Student 58"
+	TA 3 starts reading email.
+Student 63 gets a result, he has 5 bugs.
+Student 63 exits.
+Student 103 takes the machine.
+Student 103 starts debugging.
+	TA 8 starts reading email.
+Student 41 gets a result, he has 2 bugs.
+Student 41 starts debugging.
+	TA "TA 17" takes a student.
+	TA 17 has examined the work, found 2 bugs.
+	TA 17 gets assigned to a student "Student 73"
+	TA 13 starts reading email.
+Student 114 gets a result, he has 10 bugs.
+Student 114 exits.
+Student 14 takes the machine.
+Student 14 starts debugging.
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 8 bugs.
+	TA 16 gets assigned to a student "Student 18"
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 0 bugs.
+	TA 11 gets assigned to a student "Student 80"
+	TA 11 starts reading email.
+Student 58 gets a result, he has 8 bugs.
+Student 58 exits.
+Student 97 takes the machine.
+Student 97 starts debugging.
+	TA 17 starts reading email.
+Student 73 gets a result, he has 2 bugs.
+Student 73 starts debugging.
+	TA 16 starts reading email.
+Student 18 gets a result, he has 8 bugs.
+Student 18 exits.
+Student 107 takes the machine.
+Student 107 starts debugging.
+	TA 0 starts reading email.
+Student 80 gets a result, he has 0 bugs.
+	Student 80 rejoiced!
+Student 80 exits.
+Student 99 takes the machine.
+Student 99 starts debugging.
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 1 bugs.
+	TA 4 gets assigned to a student "Student 78"
+	TA 4 starts reading email.
+Student 78 gets a result, he has 1 bugs.
+Student 78 starts debugging.
+	TA "TA 12" takes a student.
+	TA 12 has examined the work, found 0 bugs.
+	TA 12 gets assigned to a student "Student 56"
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 7 bugs.
+	TA 16 gets assigned to a student "Student 89"
+	TA 12 starts reading email.
+Student 56 gets a result, he has 0 bugs.
+	Student 56 rejoiced!
+Student 56 exits.
+Student 110 takes the machine.
+Student 110 starts debugging.
+	TA 16 starts reading email.
+Student 89 gets a result, he has 7 bugs.
+Student 89 exits.
+Student 104 takes the machine.
+Student 104 starts debugging.
+	TA "TA 2" takes a student.
+	TA 2 has examined the work, found 3 bugs.
+	TA 2 gets assigned to a student "Student 20"
+	TA 2 starts reading email.
+Student 20 gets a result, he has 3 bugs.
+Student 20 starts debugging.
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 3 bugs.
+	TA 19 gets assigned to a student "Student 67"
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 7 bugs.
+	TA 16 gets assigned to a student "Student 31"
+	TA 19 starts reading email.
+Student 67 gets a result, he has 3 bugs.
+Student 67 starts debugging.
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 1 bugs.
+	TA 7 gets assigned to a student "Student 74"
+	TA 7 starts reading email.
+Student 31 gets a result, he has 7 bugs.
+Student 31 exits.
+Student 109 takes the machine.
+Student 109 starts debugging.
+	TA 16 starts reading email.
+Student 74 gets a result, he has 1 bugs.
+Student 74 starts debugging.
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 3 bugs.
+	TA 8 gets assigned to a student "Student 83"
+	TA "TA 2" takes a student.
+	TA 2 has examined the work, found 10 bugs.
+	TA 2 gets assigned to a student "Student 81"
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 3 bugs.
+	TA 4 gets assigned to a student "Student 86"
+	TA "TA 14" takes a student.
+	TA 14 has examined the work, found 2 bugs.
+	TA 14 gets assigned to a student "Student 21"
+	TA 8 starts reading email.
+Student 83 gets a result, he has 3 bugs.
+Student 83 starts debugging.
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 1 bugs.
+	TA 11 gets assigned to a student "Student 2"
+	TA 11 starts reading email.
+Student 81 gets a result, he has 3 bugs.
+Student 81 starts debugging.
+	TA 2 starts reading email.
+Student 86 gets a result, he has 1 bugs.
+Student 86 starts debugging.
+	TA 14 starts reading email.
+Student 21 gets a result, he has 2 bugs.
+Student 21 starts debugging.
+	TA "TA 18" takes a student.
+	TA 18 has examined the work, found 6 bugs.
+	TA 18 gets assigned to a student "Student 87"
+	TA 4 starts reading email.
+Student 2 gets a result, he has 1 bugs.
+Student 2 starts debugging.
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 9 bugs.
+	TA 16 gets assigned to a student "Student 64"
+	TA 18 starts reading email.
+Student 87 gets a result, he has 6 bugs.
+Student 87 exits.
+Student 105 takes the machine.
+Student 105 starts debugging.
+	TA "TA 6" takes a student.
+	TA 6 has examined the work, found 10 bugs.
+	TA 6 gets assigned to a student "Student 88"
+	TA "TA 9" takes a student.
+	TA 9 has examined the work, found 9 bugs.
+	TA 9 gets assigned to a student "Student 34"
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 3 bugs.
+	TA 19 gets assigned to a student "Student 76"
+	TA 9 starts reading email.
+Student 64 gets a result, he has 7 bugs.
+Student 64 exits.
+Student 112 takes the machine.
+Student 112 starts debugging.
+	TA 19 starts reading email.
+Student 88 gets a result, he has 7 bugs.
+Student 88 exits.
+Student 108 takes the machine.
+Student 108 starts debugging.
+	TA 6 starts reading email.
+Student 34 gets a result, he has 9 bugs.
+Student 34 exits.
+Student 102 takes the machine.
+Student 102 starts debugging.
+	TA 16 starts reading email.
+Student 76 gets a result, he has 3 bugs.
+Student 76 starts debugging.
+	TA "TA 1" takes a student.
+	TA 1 has examined the work, found 10 bugs.
+	TA 1 gets assigned to a student "Student 98"
+	TA "TA 0" takes a student.
+	TA 0 has examined the work, found 5 bugs.
+	TA 0 gets assigned to a student "Student 68"
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 4 bugs.
+	TA 5 gets assigned to a student "Student 94"
+	TA "TA 10" takes a student.
+	TA 10 has examined the work, found 0 bugs.
+	TA 10 gets assigned to a student "Student 73"
+	TA 10 starts reading email.
+Student 98 gets a result, he has 10 bugs.
+Student 98 exits.
+Student 111 takes the machine.
+Student 111 starts debugging.
+	TA "TA 6" takes a student.
+	TA 6 has examined the work, found 9 bugs.
+	TA 6 gets assigned to a student "Student 103"
+	TA 1 starts reading email.
+Student 68 gets a result, he has 10 bugs.
+Student 68 exits.
+Student 90 takes the machine.
+Student 90 starts debugging.
+	TA 5 starts reading email.
+Student 94 gets a result, he has 4 bugs.
+Student 94 starts debugging.
+	TA 0 starts reading email.
+Student 73 gets a result, he has 0 bugs.
+	Student 73 rejoiced!
+Student 73 exits.
+Student 82 takes the machine.
+Student 82 starts debugging.
+	TA "TA 15" takes a student.
+	TA 15 has examined the work, found 0 bugs.
+	TA 15 gets assigned to a student "Student 95"
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 1 bugs.
+	TA 13 gets assigned to a student "Student 91"
+	TA 6 starts reading email.
+Student 103 gets a result, he has 9 bugs.
+Student 103 exits.
+Student 79 takes the machine.
+Student 79 starts debugging.
+	TA 15 starts reading email.
+Student 95 gets a result, he has 0 bugs.
+	Student 95 rejoiced!
+Student 95 exits.
+	TA 13 starts reading email.
+Student 91 gets a result, he has 1 bugs.
+Student 91 starts debugging.
+	TA "TA 3" takes a student.
+	TA 3 has examined the work, found 10 bugs.
+	TA 3 gets assigned to a student "Student 92"
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 3 bugs.
+	TA 13 gets assigned to a student "Student 110"
+	TA 3 starts reading email.
+Student 92 gets a result, he has 10 bugs.
+Student 92 exits.
+	TA "TA 17" takes a student.
+	TA 17 has examined the work, found 9 bugs.
+	TA 17 gets assigned to a student "Student 100"
+	TA "TA 2" takes a student.
+	TA 2 has examined the work, found 7 bugs.
+	TA 2 gets assigned to a student "Student 97"
+	TA 17 starts reading email.
+Student 110 gets a result, he has 1 bugs.
+Student 110 starts debugging.
+	TA 13 starts reading email.
+Student 100 gets a result, he has 9 bugs.
+Student 100 exits.
+	TA 2 starts reading email.
+Student 97 gets a result, he has 7 bugs.
+Student 97 exits.
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 10 bugs.
+	TA 11 gets assigned to a student "Student 109"
+	TA "TA 18" takes a student.
+	TA 18 has examined the work, found 3 bugs.
+	TA 18 gets assigned to a student "Student 99"
+	TA 18 starts reading email.
+Student 109 gets a result, he has 1 bugs.
+Student 109 starts debugging.
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 9 bugs.
+	TA 5 gets assigned to a student "Student 101"
+	TA "TA 10" takes a student.
+	TA 10 has examined the work, found 8 bugs.
+	TA 10 gets assigned to a student "Student 12"
+	TA "TA 0" takes a student.
+	TA 0 has examined the work, found 8 bugs.
+	TA 0 gets assigned to a student "Student 67"
+	TA 10 starts reading email.
+Student 99 gets a result, he has 3 bugs.
+Student 99 starts debugging.
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 10 bugs.
+	TA 8 gets assigned to a student "Student 41"
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 5 bugs.
+	TA 13 gets assigned to a student "Student 39"
+	TA 8 starts reading email.
+Student 101 gets a result, he has 4 bugs.
+Student 101 starts debugging.
+	TA 11 starts reading email.
+Student 12 gets a result, he has 8 bugs.
+Student 12 exits.
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 2 bugs.
+	TA 16 gets assigned to a student "Student 93"
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 5 bugs.
+	TA 4 gets assigned to a student "Student 96"
+	TA 5 starts reading email.
+Student 67 gets a result, he has 5 bugs.
+Student 67 exits.
+	TA 4 starts reading email.
+Student 41 gets a result, he has 10 bugs.
+Student 41 exits.
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 0 bugs.
+	TA 7 gets assigned to a student "Student 69"
+	TA 0 starts reading email.
+Student 39 gets a result, he has 3 bugs.
+Student 39 starts debugging.
+	TA "TA 12" takes a student.
+	TA 12 has examined the work, found 9 bugs.
+	TA 12 gets assigned to a student "Student 84"
+	TA 7 starts reading email.
+Student 93 gets a result, he has 9 bugs.
+Student 93 exits.
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 3 bugs.
+	TA 19 gets assigned to a student "Student 83"
+	TA "TA 14" takes a student.
+	TA 14 has examined the work, found 8 bugs.
+	TA 14 gets assigned to a student "Student 104"
+	TA 12 starts reading email.
+Student 96 gets a result, he has 5 bugs.
+Student 96 exits.
+	TA 13 starts reading email.
+Student 69 gets a result, he has 0 bugs.
+	Student 69 rejoiced!
+Student 69 exits.
+	TA "TA 9" takes a student.
+	TA 9 has examined the work, found 8 bugs.
+	TA 9 gets assigned to a student "Student 102"
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 0 bugs.
+	TA 11 gets assigned to a student "Student 86"
+	TA 16 starts reading email.
+Student 84 gets a result, he has 9 bugs.
+Student 84 exits.
+	TA 14 starts reading email.
+Student 83 gets a result, he has 3 bugs.
+Student 83 starts debugging.
+	TA 9 starts reading email.
+Student 104 gets a result, he has 8 bugs.
+Student 104 exits.
+	TA 11 starts reading email.
+Student 102 gets a result, he has 8 bugs.
+Student 102 exits.
+	TA 19 starts reading email.
+Student 86 gets a result, he has 0 bugs.
+	Student 86 rejoiced!
+Student 86 exits.
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 9 bugs.
+	TA 5 gets assigned to a student "Student 21"
+	TA "TA 10" takes a student.
+	TA 10 has examined the work, found 7 bugs.
+	TA 10 gets assigned to a student "Student 107"
+	TA 5 starts reading email.
+Student 21 gets a result, he has 9 bugs.
+Student 21 exits.
+	TA "TA 15" takes a student.
+	TA 15 has examined the work, found 2 bugs.
+	TA 15 gets assigned to a student "Student 76"
+	TA 15 starts reading email.
+Student 107 gets a result, he has 8 bugs.
+Student 107 exits.
+	TA 10 starts reading email.
+Student 76 gets a result, he has 2 bugs.
+Student 76 starts debugging.
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 2 bugs.
+	TA 16 gets assigned to a student "Student 106"
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 1 bugs.
+	TA 11 gets assigned to a student "Student 14"
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 2 bugs.
+	TA 19 gets assigned to a student "Student 20"
+	TA 16 starts reading email.
+Student 106 gets a result, he has 2 bugs.
+Student 106 starts debugging.
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 5 bugs.
+	TA 4 gets assigned to a student "Student 71"
+	TA 11 starts reading email.
+Student 14 gets a result, he has 1 bugs.
+Student 14 starts debugging.
+	TA 19 starts reading email.
+Student 20 gets a result, he has 2 bugs.
+Student 20 starts debugging.
+	TA 4 starts reading email.
+Student 71 gets a result, he has 5 bugs.
+Student 71 exits.
+	TA "TA 3" takes a student.
+	TA 3 has examined the work, found 6 bugs.
+	TA 3 gets assigned to a student "Student 105"
+	TA "TA 15" takes a student.
+	TA 15 has examined the work, found 0 bugs.
+	TA 15 gets assigned to a student "Student 78"
+	TA 3 starts reading email.
+Student 105 gets a result, he has 6 bugs.
+Student 105 exits.
+	TA 15 starts reading email.
+Student 78 gets a result, he has 0 bugs.
+	Student 78 rejoiced!
+Student 78 exits.
+	TA "TA 1" takes a student.
+	TA 1 has examined the work, found 7 bugs.
+	TA 1 gets assigned to a student "Student 94"
+	TA "TA 0" takes a student.
+	TA 0 has examined the work, found 10 bugs.
+	TA 0 gets assigned to a student "Student 112"
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 1 bugs.
+	TA 16 gets assigned to a student "Student 108"
+	TA 16 starts reading email.
+Student 94 gets a result, he has 10 bugs.
+Student 94 exits.
+	TA 0 starts reading email.
+Student 112 gets a result, he has 10 bugs.
+Student 112 exits.
+	TA 1 starts reading email.
+Student 108 gets a result, he has 1 bugs.
+Student 108 starts debugging.
+	TA "TA 14" takes a student.
+	TA 14 has examined the work, found 9 bugs.
+	TA 14 gets assigned to a student "Student 79"
+	TA 14 starts reading email.
+Student 79 gets a result, he has 9 bugs.
+Student 79 exits.
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 3 bugs.
+	TA 7 gets assigned to a student "Student 82"
+	TA 7 starts reading email.
+Student 82 gets a result, he has 3 bugs.
+Student 82 starts debugging.
+	TA "TA 6" takes a student.
+	TA 6 has examined the work, found 4 bugs.
+	TA 6 gets assigned to a student "Student 111"
+	TA "TA 18" takes a student.
+	TA 18 has examined the work, found 1 bugs.
+	TA 18 gets assigned to a student "Student 109"
+	TA "TA 9" takes a student.
+	TA 9 has examined the work, found 9 bugs.
+	TA 9 gets assigned to a student "Student 81"
+	TA 9 starts reading email.
+Student 111 gets a result, he has 9 bugs.
+Student 111 exits.
+	TA 6 starts reading email.
+Student 109 gets a result, he has 3 bugs.
+Student 109 starts debugging.
+	TA "TA 2" takes a student.
+	TA 2 has examined the work, found 4 bugs.
+	TA 2 gets assigned to a student "Student 74"
+	TA 18 starts reading email.
+Student 81 gets a result, he has 9 bugs.
+Student 81 exits.
+	TA "TA 17" takes a student.
+	TA 17 has examined the work, found 10 bugs.
+	TA 17 gets assigned to a student "Student 110"
+	TA "TA 6" takes a student.
+	TA 6 has examined the work, found 9 bugs.
+	TA 6 gets assigned to a student "Student 2"
+	TA 2 starts reading email.
+Student 74 gets a result, he has 4 bugs.
+Student 74 starts debugging.
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 0 bugs.
+	TA 19 gets assigned to a student "Student 39"
+	TA "TA 10" takes a student.
+	TA 10 has examined the work, found 7 bugs.
+	TA 10 gets assigned to a student "Student 106"
+	TA "TA 8" takes a student.
+	TA 8 has examined the work, found 5 bugs.
+	TA 8 gets assigned to a student "Student 83"
+	TA 17 starts reading email.
+Student 110 gets a result, he has 10 bugs.
+Student 110 exits.
+	TA "TA 2" takes a student.
+	TA 2 has examined the work, found 10 bugs.
+	TA 2 gets assigned to a student "Student 101"
+	TA 8 starts reading email.
+Student 2 gets a result, he has 4 bugs.
+Student 2 starts debugging.
+	TA 6 starts reading email.
+Student 39 gets a result, he has 2 bugs.
+Student 39 starts debugging.
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 9 bugs.
+	TA 13 gets assigned to a student "Student 90"
+	TA 13 starts reading email.
+Student 106 gets a result, he has 7 bugs.
+Student 106 exits.
+	TA 19 starts reading email.
+Student 83 gets a result, he has 5 bugs.
+Student 83 exits.
+	TA 10 starts reading email.
+Student 101 gets a result, he has 4 bugs.
+Student 101 starts debugging.
+	TA 2 starts reading email.
+Student 90 gets a result, he has 9 bugs.
+Student 90 exits.
+	TA "TA 3" takes a student.
+	TA 3 has examined the work, found 1 bugs.
+	TA 3 gets assigned to a student "Student 91"
+	TA "TA 9" takes a student.
+	TA 9 has examined the work, found 5 bugs.
+	TA 9 gets assigned to a student "Student 99"
+	TA 9 starts reading email.
+Student 91 gets a result, he has 6 bugs.
+Student 91 exits.
+	TA "TA 19" takes a student.
+	TA 19 has examined the work, found 3 bugs.
+	TA 19 gets assigned to a student "Student 20"
+	TA "TA 12" takes a student.
+	TA 12 has examined the work, found 7 bugs.
+	TA 12 gets assigned to a student "Student 76"
+	TA 3 starts reading email.
+Student 99 gets a result, he has 5 bugs.
+Student 99 exits.
+	TA "TA 15" takes a student.
+	TA 15 has examined the work, found 5 bugs.
+	TA 15 gets assigned to a student "Student 108"
+	TA "TA 4" takes a student.
+	TA 4 has examined the work, found 5 bugs.
+	TA 4 gets assigned to a student "Student 14"
+	TA 19 starts reading email.
+Student 20 gets a result, he has 3 bugs.
+Student 20 starts debugging.
+	TA "TA 7" takes a student.
+	TA 7 has examined the work, found 7 bugs.
+	TA 7 gets assigned to a student "Student 39"
+	TA 12 starts reading email.
+Student 76 gets a result, he has 7 bugs.
+Student 76 exits.
+	TA 4 starts reading email.
+Student 108 gets a result, he has 0 bugs.
+	Student 108 rejoiced!
+Student 108 exits.
+	TA 15 starts reading email.
+Student 14 gets a result, he has 5 bugs.
+Student 14 exits.
+	TA "TA 5" takes a student.
+	TA 5 has examined the work, found 6 bugs.
+	TA 5 gets assigned to a student "Student 74"
+	TA "TA 10" takes a student.
+	TA 10 has examined the work, found 9 bugs.
+	TA 10 gets assigned to a student "Student 109"
+	TA 7 starts reading email.
+Student 39 gets a result, he has 7 bugs.
+Student 39 exits.
+	TA "TA 11" takes a student.
+	TA 11 has examined the work, found 4 bugs.
+	TA 11 gets assigned to a student "Student 82"
+	TA 10 starts reading email.
+Student 74 gets a result, he has 9 bugs.
+Student 74 exits.
+	TA 5 starts reading email.
+Student 109 gets a result, he has 9 bugs.
+Student 109 exits.
+	TA 11 starts reading email.
+Student 82 gets a result, he has 4 bugs.
+Student 82 starts debugging.
+	TA "TA 13" takes a student.
+	TA 13 has examined the work, found 0 bugs.
+	TA 13 gets assigned to a student "Student 2"
+	TA 13 starts reading email.
+Student 2 gets a result, he has 0 bugs.
+	Student 2 rejoiced!
+Student 2 exits.
+	TA "TA 16" takes a student.
+	TA 16 has examined the work, found 9 bugs.
+	TA 16 gets assigned to a student "Student 101"
+	TA 16 starts reading email.
+Student 101 gets a result, he has 9 bugs.
+Student 101 exits.
+	TA "TA 18" takes a student.
+	TA 18 has examined the work, found 5 bugs.
+	TA 18 gets assigned to a student "Student 20"
+	TA 18 starts reading email.
+Student 20 gets a result, he has 5 bugs.
+Student 20 exits.
+	TA "TA 1" takes a student.
+	TA 1 has examined the work, found 10 bugs.
+	TA 1 gets assigned to a student "Student 82"
+	TA 1 starts reading email.
+Student 82 gets a result, he has 10 bugs.
+Student 82 exits.
+TA "TA 8" went home.
+TA "TA 3" went home.
+TA "TA 12" went home.
+TA "TA 6" went home.
+TA "TA 17" went home.
+TA "TA 10" went home.
+TA "TA 14" went home.
+TA "TA 9" went home.
+TA "TA 19" went home.
+TA "TA 15" went home.
+TA "TA 18" went home.
+TA "TA 0" went home.
+TA "TA 2" went home.
+TA "TA 11" went home.
+TA "TA 5" went home.
+TA "TA 4" went home.
+TA "TA 7" went home.
+TA "TA 13" went home.
+TA "TA 16" went home.
+TA "TA 1" went home.
