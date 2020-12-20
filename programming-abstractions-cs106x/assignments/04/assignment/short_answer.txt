@@ -1,0 +1,37 @@
+Before submitting this file, make sure that there are no more TODO
+placeholders remaining in the file (and remove this comment too).
+
+Warmup
+------
+Q1. What is the value of `totalMoves` after stepping over the call to `moveTower` in `hanoiAnimation`?
+A1. TODO
+
+Q2. What is the value of the `totalMoves` variable after stepping over the first recursive sub-call? (In other words, within `moveTower` just after stepping over the first recursive sub-call to `moveTower` inside the `else` statement.)
+A2. TODO
+
+Q3. After breaking at the base case of `moveTower` and then choosing Step Out, where do you end up? (What function are you in, and at what line number?) What is the value of the `totalMoves` variable at this point?
+A3. TODO
+
+Q4. What is the smallest possible input that you used to trigger the bug in the program?
+A4. TODO
+
+Q5. Identify the one-character error in the code and explain why that one-character bug causes the function to return the output you see when running on the minimal input you listed above. You should be able to specifically account for how the error causes the result to change from “completely correct” to “terribly wrong.”
+A5. TODO
+
+Predict
+-------
+Q6. In your own words, describe some of the specific drawbacks to using global variables and explain why a program-wide constant like `keypad` does not suffer from the same drawbacks.
+A6. TODO
+
+Voting
+------
+Q7. What is the Big O of `computePowerIndex`? Include your timing data and explain how it supports your reasoning.
+A7. TODO
+
+Q8. Use the Big O and timing data to estimate how long it would take to compute the power index for the 51 voting blocks in the U.S. Electoral College.
+A8. TODO
+
+Mid-quarter feedback
+--------------------
+Q9. What is the "secret code" that was displayed to you after completing the mid-quarter evaluation?
+A9. TODO
