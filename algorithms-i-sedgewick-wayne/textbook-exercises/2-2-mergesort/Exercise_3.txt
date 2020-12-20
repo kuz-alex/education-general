@@ -1,0 +1,21 @@
+[2.2.3] (Bottom-Up version of 2.2.2)
+0  1  2  3  4  5  6  7  8  9 10 11
+E  A  S  Y  Q  U  E  S  T  I  O  N
+
+// sz = 1
+merge(0, 0, 1)
+merge(2, 2, 3)
+merge(4, 4, 5)
+merge(6, 6, 7)
+merge(8, 8, 9)
+merge(10, 10, 11)
+    // sz = 2
+    merge(0, 1, 3);
+    merge(4, 5, 7);
+    merge(8, 9, 11);
+        // sz = 4
+        merge(0, 3, 7);
+            // sz = 8
+            merge(0, 7, 11);
+
+

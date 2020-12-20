@@ -1,0 +1,79 @@
+sort(a, 0, 11)
+    partition(a, 0, 11) // 2
+    sort(a, 0, 1)
+        partition(a, 0, 1) = 1
+        sort(a, 0, 0)
+        sort(a, 2, 1)
+    sort(a, 3, 11)
+        partition(a, 2, 11) // 11
+        sort(3, 10)
+            partition(a, 3, 10) // 4
+            sort(3, 3)
+            sort(5, 10)
+                partition(5, 10) // 10
+                sort(5, 9)
+                    partition(a, 5, 9) // 5
+                    sort(5, 4)
+                    sort(6, 9)
+                        partition(a, 6, 9) // 7
+                        sort(6, 6)
+                        sort(8, 9)
+                            partition(a, 8, 9) // 9
+                            sort(8, 8)
+                            sort(10, 9)
+                sort(11, 10)
+        sort(12, 11)
+
+
+ lo  j  hi | 0 1 2 3 4 5 6 7 8 9 10 11
+ ------------------------------------
+           | E A S Y Q U E S T I  O  N
+  0  2  11 | E A E Y Q U S S T I  O  N // j = partition(a, 0, 11) = 2
+  0      1 | A E                       // j = partition(a, 0, 1) = 1
+           | A E E I N O Q S S T  U  Y
+
+
+### partition(a, 8, 9) = 9
+char v = T
+    8 9
+    T S // i = 9, j = 9
+    T S // swap(lo, j)
+    S T // final, return 9
+
+### partition(a, 6, 9) = 7
+char v = S; i = 6, j = 10
+6 7 8 9 
+S S T Q // i = 7, j = 9
+  Q   S // swap(i, j)
+  Q T S // i = 8, j = 7
+Q S     // swap(lo, j)
+Q S T S // final, return 7;
+
+5 6 7 8 9 
+O S S T Q // i = 6, j = 5
+O         // swap(lo, j);
+O S S T Q // final, return 5
+
+
+### partition(a, 5, 10) = 10
+char v = U;
+int lo = 5, j = 11;
+
+5 6 7 8 9 10
+U S S T Q  O // i = 10, j = 10
+O          U // swap(lo, j)
+O S S T Q  O // final, return 10
+
+
+### partition(a, 3, 10) = 4
+char v = N;
+int lo = 3, j = 11;
+    ___
+3 4 5 6 7 8 9 10
+N Q U S S T I  O // i = 4, j = 9
+  I         Q    // swap(4,9)
+  I U S S T Q    // i = 5, j = 4
+I N              // swap(3,4)
+I N U S S T Q  O // final, return 4
+
+### partition()

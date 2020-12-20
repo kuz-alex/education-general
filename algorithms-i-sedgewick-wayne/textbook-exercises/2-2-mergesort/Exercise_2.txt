@@ -1,0 +1,34 @@
+[2.2.2] (Top-down)
+
+E A S Y Q U E S
+A E
+    S Y
+A E S Y
+        Q U
+            E S
+        E Q S U
+A E E Q S S U Y
+
+sort(0, 7);
+    sort(0, 3);
+        sort(0, 1);
+            sort(0,0);
+            sort(1,1);
+            merge(0,0,1);
+        sort(2, 3); // mid = 2
+            sort(2,2)
+            sort(3,3)
+            merge(2,2,3);
+        merge(0, 1, 3)
+    sort(4, 7) // mid = 5
+        sort(4, 5)
+            sort(4,4)
+            sort(5,5)
+            merge(4,4,5)
+        sort(6, 7)
+            sort(6,6)
+            sort(7,7)
+            merge(6,6,7)
+        merge(4, 5, 7)
+    merge(0, 3, 7)
+

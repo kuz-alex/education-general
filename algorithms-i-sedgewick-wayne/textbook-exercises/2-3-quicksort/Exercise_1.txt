@@ -1,0 +1,12 @@
+
+V = "E"
+
+ i  j | 0 1 2 3 4 5 6 7 8 9 10 11
+ --------------------------------
+ 0 12 | E A S Y Q U E S T I  O  N
+ 2  6 |     S Y Q U E
+ exch | E A E Y Q U S S T I  O  N
+ 3  2 | E A E Y Q U S
+ final| E A E Y Q U S S T I  O  N // swap two E's: exch(0, 2);
+
+
