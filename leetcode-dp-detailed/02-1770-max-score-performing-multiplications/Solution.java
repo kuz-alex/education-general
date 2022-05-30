@@ -1,5 +1,5 @@
+// https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/
 class Solution {
-    // https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/
     private int[][] memo;
     private int[] nums, multipliers;
     private int n, m;
