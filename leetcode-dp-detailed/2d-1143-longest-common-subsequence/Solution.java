@@ -36,3 +36,4 @@ class Solution {
         System.out.println(new Solution().longestCommonSubsequence("bd", "abd"));
     }
 }
+
