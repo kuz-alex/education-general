@@ -28,9 +28,21 @@ We focus only on reads and writes, but real databases solve more problems, such 
 - In a real implementation some of the problems are: file format, deleting records, crash recovery, partially written records, concurrency control.
 
 ### SSTables and LSM-Trees
-- Hash map has two major limitations: it must fit the whole hash map in memory and it's range queries are not efficient.
-- 
--
+- Hash map indexes has two major limitations: it must fit the whole hash map in memory and its range queries are not efficient.
+- Make a change in the format of our segmented files: sequence of key-values pair is _sorted by key_. This is called _Sorted String Table_ or _SSTable_. This allows us to do range queries efficiently.
+  - Since the entries are sorted we can omit indexing some of the entries. We can always find the unindexed entry in the middle of two indexed entries.
+- Log Structured Merge-Tree uses SSTables with in-memory tree and this whole indexing structure works as follows:
+  - We keep an in-memory balanced tree (e.g red-black tree), called a memtable.
+  - When memtable gets bigger than a few megabytes - write it out to disk as SSTable file (sequence of sorted key-value pairs). The new SSTable file becomes the most recent segment.
+  - Look ups for read operation become: memtable -> most recent on-disk segment -> other segments.
+  - In the background there are two processes: merging and compaction process for segment files and submitting a memtable to a new file segment (with creating a new memtable).
+- Performance optimizations:
+  - Bloom filters to avoid querying for non-existing keys (which would require to scan memtable and every segment)
+  - Size-tiered compaction: never and smaller SSTables are successively merged into older and larger SSTables.
+  - Level-tiered compaction: _not sure if I understand this_
+
+### B-trees
+
 
 ### Comparing B-Trees and LSM-Trees
 ### Other Indexing Structures
