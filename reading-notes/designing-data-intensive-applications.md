@@ -42,9 +42,33 @@ We focus only on reads and writes, but real databases solve more problems, such 
   - Level-tiered compaction: _not sure if I understand this_
 
 ### B-trees
-
+- SSTables break the database down into variable-sized _segments_ (several megabytes) and always write sequentially.
+- B-trees break the database down into fixed-size _blocks_ or _pages_ (4KB traditionally) and read/write one page at a time. Each page can be identified using an address or location.
+- Searching for a key:
+  - You start at the page which is _root_ of the B-tree. Root page contains several keys and references to child pages.
+  - Each child page contains sub-ranges
+  - We go further into child pages until we get to a _leaf_ page, which either contains values or references to values for our key.
+- Updating a value for an existing key: we search for the leaf page, change the value in that page and write page back to disk.
+- Adding a new key: find the page whose range encompas our new key and add it. If there isn't enough space in the page, it's split into two half-full pages and the parent page is updated to account for two new pages (parent page gets two new references, so the depth of the tree doesn't increase).
+- The tree remains balanced: a B-tree with n keys will have a depth of O(log n).
+- Making B-tree reliable
+  - Overwriting value in place and splitting a page into sub-ranges is dangerous, they can be interrupted by a crash resulting in an inconsistent  state.
+  - Keep a _write-ahead log_ (WAL, _redo log_). Append-only file that keeps record of every B-tree modification. Before applying modification to the actual pages, we record it to WAL. After a crash we can restore the state from this file.
+  - Two threads might access B-tree at the same time. Use _latches_ (lightweight locks).
+- B-tree optimizations: abbreviating keys (especially those that only act as a boundaries between ranges), keeping leaf pages in sequential order on disk, keeping pointers of left and right sibilings of a page.
 
 ### Comparing B-Trees and LSM-Trees
+- General rule: LSM-trees are faster for writes, B-trees are faster for reads. LSM-trees slower in reads because they have to go through the memtable and all the segments (SSTables).
+- Advantages of LSM-trees:
+  - In write-heavy applications LSM-trees are generally better because they write compact SSTables rather than B-trees which are overwriting several pages in the tree even for a single change.
+    - LSM-trees are considered to have lower _write amplification_ (one write to database resulting in multiple writes to disk).
+  - Can compress better and produce smaller files on disk than B-trees (B-trees leave some disk spce unused due to fragmentation).
+- Downsides of LSM-trees
+  - Compaction process can interfere with read/write performance. Disk have limited resources and it can happen that a request needs to wait for finish of some expensive compaction.
+  - Compaction can also affect performance because disk write bandwidth needs to be shared between the flushing a memtable to disk and the compaction threads running in the background.
+    - It can happen that compaction can't keep up with the rate of upcoming writes, the number of segments (SSTables) will grow which will affect performance of reads as well. You should explicitly monitor this.
+  - Having multiple copies of the same key (in segments) is a disadvantage because it's harder to implement locks (transaction isolation). In B-trees, those locks can be attached directly to the tree (on ranges of keys).
+
 ### Other Indexing Structures
 
 ## Transaction Processing or Analytics?
