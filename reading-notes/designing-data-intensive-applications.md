@@ -1,6 +1,15 @@
 
 # Chapter 3. Storage and Retrieval
 
+Main ideas:
+- OLTP (made for transaction processing)
+  - Relational versus log-structured storage
+    - "Relational" updates in place, keeping only one copy of each record (B-trees)
+    - "Log-based" writes sequentially, but requires multiple data structures and compression for obsolete copies of records.
+- OLAP (made for analytics)
+  - Analytic workloads are a special case with their own optimizations.
+
+
 ## Data Structures That Power Your Database
 
 - The chapter starts with an example of the database storage implemented as append-only data file (log). Many real databases use this kind of format.
@@ -21,7 +30,7 @@ We focus only on reads and writes, but real databases solve more problems, such 
 - It's a viable approach, but all the keys should fit in RAM, since the hash map is kept in memory.
 - So far, we've only been adding to a file, but we don't want it to grow forever and run out of disk space.
   - Break the log into segments when it reaches a certain size
-  - Perform compaction and optionally merging of the segments
+  - Perform compaction where you eliminate duplicated keys
   - New merged segments are written to a new file, thus merging & compaction can be performed in the background thread.
   - Since we have multiple segments, our reads now are looking for indexes in every separate segment, from most recent to oldest.
     - Merging process keeps the numer of segments small, so there are fewer segments to search in.
@@ -70,9 +79,47 @@ We focus only on reads and writes, but real databases solve more problems, such 
   - Having multiple copies of the same key (in segments) is a disadvantage because it's harder to implement locks (transaction isolation). In B-trees, those locks can be attached directly to the tree (on ranges of keys).
 
 ### Other Indexing Structures
+- __Storing values within the index__. The key in an index is the thing we search for, but the value can be either a link to a row elsewhere or an actual row.
+  - _Heap file_ approach, each index keeps a reference to a row that is stored in _heap file_. Allows us to avoid duplication when multiple secondary indexes are present (because each index references a location).
+  - _Clustered index_ approach, each index stores the row directly within.
+  - Example: in MySQL's InnoDB storage engine, the primary key of a table is always a clustered index and secondary indexes refer to the primary key (rather than a heap file location).
+  - _Covering index_ or _index with included columns_ are compromise between clustered and nonclustered indexes. It stores some of a table's columns within the index.
+
+- __Mutli-column indexes__. Querying multiple columns of a table simultaneously.
+  - _Concatenated index_ (like a paper phone book, concatenated keys like `lastname firstname`, good for finding people for a particular lastname, useless for searching for firstnames.
+  - _Multidimensional (spatial) indexes_, often used for geographic locations (restaurants for certain latitude and longtitude). Or searching for products in a certain range of colors. Implemented with R-trees.
+
+#### In-memory databases
+- For example Memcached, which is intented for caching use only, that is it's acceptable if data is lost if machine is restarted.
+- Performance advantage is not due to the fact that they don't read from disk (disk-based storage engine also doesn't read from disk when you have enough memory, OS caches blocks in memory). Rather, they can be faster because they avoid data encoding.
+- They also allow more flexibility in data structures, for example Redis allows using priority queue and sets, and implementation is simplier because all the data is in memory.
+
 
 ## Transaction Processing or Analytics?
 
+- In the early days, a write to the database usually meant a commercial transaction. Databases expanded into different areas, but word transaction nevertheless stuck, referring to a group of reads and writes.
+- A typical usage pattern known as _online transaction processing_ (OLTP): look up a small number of records by some key, using an index and update them based on the user's input.
+- But for data analytics pattern is different (it's called _online analytic processing (OLAP)_: reads across large number of records and calculate aggregate numbers (sum of revenue).
+
+### Data warehousing
+- Usually OLTP systems are critical for our businesses and we don't want to let business analyst run ad hoc analytic queries on them.
+- _Data warehouse_ is a separate database that is read-only copy of the data in all the various OLTP systems.
+- _Extract-Transform-Load_ process is a process of extracting, transforming into a analyst-friendly schema, cleaning up and loading data into the warehouse.
+- Data warehouses are optimized for analytics, we will explore storage engines that are optimized for hits.
+
+### Stars and Snowflakes: Schemas for Analytics
+- In analytics there are less diversity of data models.
+  - _Star schema (dimensional modeling)_: fact table at the center (_facts_ are individual events), usually with lots of columns.
+    - Some of the columns of the fact table are attributes, other are references to other tables called _dimension tables_.
+    - Table relationships are visualized as a star, with fact table in the middle surrounded by dimension tables.
+  - _Snowflake schema_, a variation of template above, where dimensions are further broken into subdimension.
+
 ## Column-Oriented Storage
+
+- For trillions of rows and petabytes of data in fact tables it's a challenge to optimize the data warehouse.
+- We can take advantages of the fact that usually analysts don't do `SELECT *` on fact tables but query only for 4-5 columns at a time. We want to avoid reading all this rows, parsing them and filtering out needed columns. Thus, we will store columns of data together, instead of storing records (rows) together.
+- Columns from the same fact table should store all rows in the same orders.
+
+
 
 # Chapter 4. Encoding and Evolution
