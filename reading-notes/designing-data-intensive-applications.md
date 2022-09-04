@@ -121,5 +121,106 @@ We focus only on reads and writes, but real databases solve more problems, such 
 - Columns from the same fact table should store all rows in the same orders.
 
 
-
 # Chapter 4. Encoding and Evolution
+
+JSON, XML, Protocol Buffers, Thrift and Avro are all formats for encoding data. This chapters explores:
+1. How they handle schema changes and backward/forward compatibility.
+2. How each of these formats is used for for data storage and communication (web services, REST, RPC).
+
+- Applications change over time and we should build systems where it's possible to adapt to change.
+
+- Data models change too, relational databases assume that all data in the database conforms to one schema. Schema-on-read (schemaless) databases don't enforce a schema, so the database can contain a mixture of older and newer data written at different times.
+
+When a data format or schema changes, application code also needs to be updated:
+  - Server side applications: rolling upgrade (staged rollout), which is deploying a new version to a few nodes at a time and checking if everything's running smoothly. This enables upgrade without service downtime.
+  - Client side applications: you're at the mercy of the user, they have to install updates, which may not happen for some time.
+
+This means old and new versions of the code may potentially coexist and our systems needs to maintain _backward_ and _forward_ compatibility. Forward compatibility can be tricker, it requires older code to ignore additions made by a newer code.
+
+
+## Formats for Encoding Data
+- There are two ways programs work with data:
+  1. In memory: objects, structs, lists, arrays, hash tables, trees, etc. They're all optimized for manipulation by CPU.
+  2. When you write the data to a file or send it over the network, you have to encode it so other programs can understand it.
+
+- Translation from in memory to a byte sequence, called encoding (_serialization, marshalling_). The reverse coalled decoding (_parsing, deserialization, unmarshalling_).
+
+### Programming languages built-in encoding
+We could use built-in support for encoding in a programming language (e.g java.io.Serializable), but this would bring the following problems:
+  - Commitment, It ties you to a particular programming language for a long time. Other system in different languages would not be able to parse your data.
+  - Security, decoding instantiates arbitrary classes, attackers can exploit that to execute arbitrary code.
+  - Neglect of forward/backward compatibility, implementations are meant for quick and easy encoding.
+  - Not efficient (Java's built in serialization is notorious for bad performance and bloated encoding).
+
+### JSON, XML and CSV formats
+  - XML and CSV encodings of numbers, you cannot distinguish between a number and a string that consist of digits. JSON doens't distinguish between integers and floaing point numbers. The JSON returned by Twitter API includes tweet's ID twice, sending it as a decimal string to work around the fact that JavaScript apps couldn't parse JSON number.
+  - JSON and XML supports Unicode character strings (human readable text), but don't support binary strings (sequences of bytes). A way to get around that limitation is to encode data as text using Base64, the schema is used then to interpret values as Base64-encoded.
+  - There are optional schemas for both XML and JSON (XML is more widespread). They're complicated to learn and implement. Applications that don't use these schemas would need to hardcode the appropriate encoding/decoding logic when working with such data.
+  - CSV don't support schemas, applications handle changes manually. CSV is also quite vague, not every parser correctly implements the specifications for CSV escaping.
+
+Main advantage of using these formats is that they're popular and can be used to interchange data between organizations, without going through extra agreements and making conventions.
+
+
+### Binary encoding
+For data inside an organization these are viable. When thinking about terabytes of data, the choise of data format can have a big impact.
+
+- JSON takes less space than XML and has different variants of binary encodings. E.g MessagePack, which brings a small reduction in size and loss of human-readability. It's not clear if it's a good trade-off. There are better binary encodings.
+
+- __Apache Thrift__
+  - Developed at Facebook
+  - Requires a schema for any data that is encoded. Brings field type annotations and length indication.
+  - Uses field tags to omit sending field names (e.g "1" for "firstName", "2" for "secondName"). JSON binary formats always send the key's names as well, increasing the size.
+  - Has two different formats: _BinaryProtocol_ and _CompactProtocol_. Latter brings additional compaction strategies:
+    - packing the field type and tag number into a single byte
+    - variable-length integers
+
+- __Protocol Buffers__
+  - Developed at Google
+  - Similar to Thrift CompactProtocol, just does the bit packing slightly differently.
+  - They don't have a list or array datatype, but use `repeated` marker for fields (third along `required` and `optional`).
+
+- Schema evolution for the above two encodings:
+  - Easy to add new fields (with new tag numbers).
+    - Forward compatibility: old code will simply ignore new fields, datatype annotation will tell the parser how many bytes to skip.
+    - Backwards compatibility: new code will be able to read old data as long as we don't change tag numbers. Only detail is that every new field cannot be "required", it must be optional and provide a default values.
+  - Removing field, for compatibility you can only remove optional fields and never reuse the tag numbers.
+  - Protocol buffers also enabled change from `optional` to `repeated` (evolution from single-valued to multi-valued), new code reading old data sees a list with zero or 1 element, old code reading new data sees only the last element of the list. Thrift doens't support that, but it has the advantage of supporting nested lists.
+
+- __Apache Avro__
+  - Subproject of Hadoop
+  - Doesn't use `optional` and `required` markers (it has unions (`{null, string} field`) and default values inastead)
+  - Uses a schema to specify the structure of the data being encoded. Two schema languages: one for humand editing, one that is more easily machine readable.
+  - There are no tag numbers in the schema, there are also nothing to identify fields or their datatypes. The encoding simply consist of values concantenated together. Thus it's very compact.
+    - When parsing the binary data, you're reading fields (and their types) in the exact order they appear in the schema. Any mismatch would mean incorrectly decoded data.
+- How Avro support schema evolution?
+  - When app wants to encode the data, it encodes it using whatever version of the schema it knows about (e.g the schema that is currently compiled into application). It's the `writer's schema`.
+  - When app wants to decode the data, it expects the data to correspond to a schema, this is the `reader's schema`.
+    - Writer and reader schemas don't have to be the same. They only have to be compatible. When the data is parsed, Avro resolves the differences, translates data from the writer's schema into reader's schema.
+  - For compatibility, in Avro you may only add or remove a field that has a default value. When using a new schema we read a record written with an older schema, the default value is filled in for the missing field.
+
+How does the reader know the writer's schema with which a particular piece of data was encoded (reader needs that to resolve the differences):
+  - _Large file with lots of records_, a very common case, especially in the context of Hadoop (all records in a file encoded with the same schema. Writer of that file can just include the writer's schema in the beginning (Avro object container file).
+  - _Database with individually written records_, where you cannot assume all the records will have the same schema. Include a version number at the beginning of every encoded record and keep a list of schema versions in the db. A reader can fetch a record and lookup the writer's schema.
+  - _Sending records over a network connection_, two processes can negotiate the schema version at the setup step of the connection and use it for the lifetime of the connection (Avro RPC protocol).
+
+
+- Avro is good for _dynamically generated_ schemas. E.g you have relational database whose contents you want to dump to a file.
+  - This is due to the fact Avro's schema doens't have any tag numbers. If you were using Thrift or Protobuf, the field tags would likely have to be assigned by hand and every update you would need to manually upate the mapping from database column names to field tags.
+
+- Avro provides optional code generation, thus we can omit generating code for dynamically types languages like Python, Javascript or Ruby. Moreover for dynamically generated schema, such as object container file from the database dump, code generation is an unnecessary obstacle to getting to the data. You can just open the file and look at the data with schema in it's metadata.
+
+- So, Protobufs, Thrift and Avro all use a schema to describe a binary encoding format. Their schemas much simplier and support more features than JSON/XML schemas.
+  - Even though textual data formats (JSON/XML/CVS) are widespread, binary formats have their own benefits:
+    - They're more compact
+    - Schema is a valuable form of documentation, it's maintained automatically since a schema is required for decoding.
+    - Keeping versions of schemas allows checking for forwards and backwards compatibility before deploying.
+    - For statically typed PL the schemas are usefull with it's code generation, type-checking at compile time.
+  - Schema evolution allows the same kind of flexibility as schemaless JSON database provide, while also providing more checks for your data and better tooling.
+
+
+
+
+
+## Modes of Dataflow
+
+
