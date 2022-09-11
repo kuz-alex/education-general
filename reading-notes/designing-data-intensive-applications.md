@@ -217,10 +217,60 @@ How does the reader know the writer's schema with which a particular piece of da
     - For statically typed PL the schemas are usefull with it's code generation, type-checking at compile time.
   - Schema evolution allows the same kind of flexibility as schemaless JSON database provide, while also providing more checks for your data and better tooling.
 
-
-
-
-
 ## Modes of Dataflow
+
+- Ways that data flows from one process to another:
+  - Databases
+  - Service calls
+  - Async message passing
+
+### Dataflow Through Databases
+- Backward compatibility: your future self needs to be able to read what you previously wrote.
+- Forward compatibility: value in the database may be written by a _newer_ code and subsequently read by an _older_ code. This may happen in a rolling upgrade, when some instances already updated and write the new version of data, while some running and old version that doesn't know anything about new format.
+- Data might be lost when an older version of the application reads the record, updates it and writes it back. The encoding formats support such preservation of unknown fields.
+
+- Databases contain a lot of older records that were written with an older schema (_data outlives code_). Rewriting (migrating) old data into new schema is very excensive and db's prefer not to do that.
+  - You still might want to dump the contents of the database (as for archival purposes), in this case you can encode all the data with the new schema consistently. Avro object containers are usually a good fit for that (or in analytic-friendly column-oriented format such as Parquet).
+
+### Dataflow Through Services: REST and RPC
+
+Web services are used in the following contexts:
+1. Client application making HTTP requests.
+2. Service making requests to another service located within the same datacenter.
+3. Services from different organizations communicating through API.
+
+- REST
+  - Design philosophy that builds upon HTTP principles.
+  - Uses URLs to request resources and utilizes HTTP features such as methods, headers, etc for request specifications.
+
+- SOAP
+  - XML-based protocol for making network API requests.
+  - Independent from HTTP, doesn't use its features. Has its own standards (web service framework _WS-*_).
+  - API is described using an XML-based language WSDL (web service description language).
+    - WSDL provides code generation, creates classes and methods (encoded to XML and decoded by framework)
+    - WSDL not human readable, you need to generate code or use IDE tools to understand it.
+    - Different vendors' implementations still cause problems, even tho WSDL good has standards.
+
+There also were RPCs (remote procedure calls) before web services.
+
+- Problems with RPCs
+  - RPC tries to make a network request look like a local method call, but it has problems, because request is different from a local call in the following ways:
+    - Network request can fail and you should be able to anticipate it by retrying. But local function calls are predictable (we know beforehand if they succeed or fail).
+    - Local function either returns a result, or throws an exception, or never returns. A network request has extra outcode: _timeout_. When you don't get a response from a remote service - you don't know if your request ever reached it.
+    - If you retry are failed request, it could happen that previous requests were getting through and only responses were getting lost. Local function don't have this problem. In requests you might need to build mechnism for deduplication (idempotence).
+    - Requests predictably take time to execute.
+    - You can pass pointers to a local function, in a request all the data you pass should be encoded before sent over the network.
+    - Client and server can be written in different programming languages with different datatypes, so RPC must do additional translation of datatypes.
+  - So, there's no point in trying to make a remote service look like a local objects in your programming language. They're fundamentally different things.
+
+- Current directions for RPC
+  - Thrift Avro comes with RPC support included. gRPC is an implementation using Protocol Buffers.
+  - New implementations are more explicit about the fact that remote request is different from local functions. Finagle and Rest.li use _futures_, gRPC support _streams_. They all convenient in different ways.
+  - RPC protocols with binary encodings can achieve better performance thna something like JSON over REST.
+    - RESTful APIs are still more convenient for debugging, development and experimentation. For these reasons REST still dominant. RPC is usually used within the same organization.
+
+
+
+## Message-Passing Dataflow
 
 
