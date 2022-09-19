@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * 139. Word Break
  * https://leetcode.com/problems/word-break/
- **/
+ */
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         boolean dp[] = new boolean[s.length()];
