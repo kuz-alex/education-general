@@ -267,10 +267,49 @@ There also were RPCs (remote procedure calls) before web services.
   - Thrift Avro comes with RPC support included. gRPC is an implementation using Protocol Buffers.
   - New implementations are more explicit about the fact that remote request is different from local functions. Finagle and Rest.li use _futures_, gRPC support _streams_. They all convenient in different ways.
   - RPC protocols with binary encodings can achieve better performance thna something like JSON over REST.
-    - RESTful APIs are still more convenient for debugging, development and experimentation. For these reasons REST still dominant. RPC is usually used within the same organization.
+    - RESTful APIs are still more convenient for debugging, development and experimentation. For these reasons REST still dominant.
+    - RPC is usually used within the same organization.
+
+- Data encoding for RPC
+  - Backward compatibility for requests, old clients should be able to ask an updated server.
+  - Foward compatibility for responses, so new clients don't break when served from an older server.
+  - Compatibility for RPC scheme is inherited from whatever encoding it uses:
+    - Thrift, gRPC (Protocol Buffers), and Avro RPC are evolved in according with their encoding format.
+    - SOAP uses XML schemas, these can be evolved, but there are some pitfalls
+    - RESTful APIs use JSON, new url parameters or new response fields can be added safely.
+
+### Message-Passing Dataflow
+
+- We've looked at RPC (data flows between processes) and databases (one process encodes data and another process reads it). There also are async message-passing systems, which are somewhere in between.
+- Typically client's request in these systems are called _message_, like RPC they're sent with low latency, but not via direct network connection (like dbs).
+- _Message broker_ (or _message queue_) has the advantages over the RPC:
+    - Can act as a buffer when recipient is unavailable
+    - Redelivers messages to a crashed process
+    - It allows one message to be sent to several recipients
+    - It doesn't need to know port and IP address of the recipient
+    - Decoupling, sender just publishes messages without care who consumes it
+- The other difference from RPC is that sender doesn't expect a response to it's messages (it's possible only via separate channel).
+- Modern open source message broker implementations:
+    - RabbitMQ, ActiveMQ, HornetQ, NATS and Apache Kafka
+- Message broker works as follows:
+    - _A message_ is dispatched to a _queue_ or a _topic_, and the broker ensures it's delivery to one or more _consumers_ or _subscribers_ to that queue.
+    - To imitate a reply, we might have a reply queue, in which consumers can publish their own messages.
+- Since message brokers don't enforce a format, you can use any encoding and have backward and forward compatibility, so you'll be able to change publishers and consumers however you like.
+- __Distributed actor frameworks__
+    - _Actor_ is a programming model for concurrency in a single process. An _actor_ is encapsulated logic which may have a local state. It represents one client or entity. It sends and received asynchronous messages, delivery is not guaranteed: messages can be lost. Actor processes a single message at a time, thus it doesn't worries about threads.
+    - _Distributed actor frameworks_, is a programming model which is used to scale application across multiple nodes. The same message-passing mechanism is used (even for two different nodes over the network). If the message is sent over the network, it's encoded into a byte sequence and decoded on the other side.
+        - Actor model already assumes that messages may be lost (even within the single process), so this model is more natural to work with than RPC.
+    - Distributed actor frameworks basically integrate message broker and the actor programming model into a single framework.
+    - Popular frameworks and how they handle data encoding:
+        - _Akka_ uses Java's built-in serialization (no `-> <-` compatibility), you cna replace it with Protocol Buffers and gain the ability to do rolling upgrades.
+        - _Orleans_, it uses a custom encoding format which also doesn't support rolling upgrades from the box. Custom serialization plugins can be used.
+        - _Erland OTP_.
 
 
+# Chapter 5. Replication
 
-## Message-Passing Dataflow
+- Keeping a copy off the same data on different nodes, potentially in different locations.
+
+## 5.1 Leaders and Followers
 
 
