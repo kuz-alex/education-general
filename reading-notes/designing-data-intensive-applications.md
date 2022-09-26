@@ -311,5 +311,36 @@ There also were RPCs (remote procedure calls) before web services.
 - Keeping a copy off the same data on different nodes, potentially in different locations.
 
 ## 5.1 Leaders and Followers
+- Replication is keeping a copy of the same data on multiple machines.
+    - Possible to store data close to users geographically.
+    - When a single machine fails, the system keeps going.
+    - To scale out the number of machines that can serve read queries.
+- Main challenge is to keep everything in sync when data changes (if data doesn't change, replication is simple just copy data to every node).
+    - To keep data in sync, we use the following approaches: single-leader, multi-leader and leaderless.
+- Leaders and followers
+    - Each node with the database copy is called a replica. How to ensure that every replica contains the same data? Each write should be known to every replica.
+    - Leader-based replication (active/passive, master/slave) is most common apprach where one node acts as a leader.
+    - Leader node handles write requests and sends data to every other node through replication log or change stream.
+    - Follower nodes process the log from the leader and updates its copy of the data. Follower nodes also server read requests.
+    - This approach is built-in in Postgres, MySQL, etc. It also used in non-relational databases. Not only databases, but message brokers too, such as Kafka and RabitMQ highly available queues.
+- Sync vs async replication
+    - When a user sends a data update request, first it gets to the leader, leader then forwards it to the followers. Eventually leader notifies the client that their request was successful.
+- In synchronous replication the leader waits for the client to repond making sure the change was saved and only then makes it visible to the client.
+    - Because of that we always know that there's a copy of data saved on some node. And if the leader fails, we will be able to recover.
+        - There's a problem with that if a synchronous follower doesn't response, write gets blocked, can't be processed.
+    - For that reason, usually only one node is synchonous and if it becomes slow or fails - one of the async nodes can take it's place.
+    - So, leader and the synchronous follower will have an up-to-date data.
+- In asynchronous replication the leader sends a message but doesn't wait for a reponse.
+    - If the leader fails we cannot recover data, any writes that have not yet been replicated are lost (even though we sent "success" to the client).
+    - So it's a trade-off: the write cannot be guaranteed to be durable. But async replication is still widely used, esp if there are many followers and they geographically distributed.
+    - There are research on replication and for critical data in asynchronous cases: look up approaches like _chain replication_.
+- How do you set up a new follower (e.g to replace a fallen node)?
+    - You cannot simply copy done it because there are always lots of incoming writes to the db. And you don't wanna lock the entire database to block writes either.
+    - 1. You take a snapshot of the leader's database at some point in time (without locking the db).
+    - 2. Copy the snapshot to the new follower node.
+    - 3. Follower connects to the leader and requests all the changes that were made to the db since the snapshot was taken.
+    - 4. The follower catches up when he proceeds all the changes from the leaders backlog. It can now proceed new changes from the leader as they happen.
+- Node outages
+
 
 
