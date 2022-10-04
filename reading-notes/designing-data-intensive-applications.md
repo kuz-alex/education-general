@@ -340,7 +340,28 @@ There also were RPCs (remote procedure calls) before web services.
     - 2. Copy the snapshot to the new follower node.
     - 3. Follower connects to the leader and requests all the changes that were made to the db since the snapshot was taken.
     - 4. The follower catches up when he proceeds all the changes from the leaders backlog. It can now proceed new changes from the leader as they happen.
-- Node outages
-
+### Handling Node Outages
+- We need to be able to reboot individual nodes without downtime (because a node can fail or shut down due to maintainance). The system should be able to keep running, a single node impact should be as small as possible.
+- To recover as a follower node, we keep a log of the data changes from the leader. When a node gets back online, it can ask the leader for all the transacations which happened when it was disconnected. It then applies all the transactions and catches up with the leader.
+- Leader failover is more complicated, the new leader should be choosen, the followers should be reconfigured, the clients should start sending data to a new leader. It’s usually handled with the following steps:
+    - To determine that the leader had failed we can simply use a timeout: all the nodes are bouncing back and forth and if a particular node doesn’t respond - it’s considered to be dead (that is unless taken down for maintainance).
+    - To choose a new leader, we use a controller node, it’s usually a good idea to choose a most up-to-date replica as a new leader.
+    - Clients and followers should be reconfiured to use a new leader.
+- Challenges when handling a leader failure:
+    - Data is lost because new leader might not receive all the transacations from the old leader. If the old leader later gets back, all the unprocessed data is usually discarded.
+    - Discarding data can cause problems if for example you use Redis alongside your Postgres, data discarded in old leader might have been saved in Redis.
+    - Two nodes might consider themselves to be a leader simultaneously and failover system can accidentally shut down both nodes.
+    - A load spike can cause a node’s response time to increase above the timeout and an unnecessary failover might make things worse in this high load time.
+### Implementation of Replication Logs
+- Statement-based replication
+    - Every INSERT, UPDATE or DELETE is forwarded to the followers, who parse and execute those statements. There are problems with this:
+        - Nondeterministic functions as NOW() RAND() etc, they will generate different values on each replica.
+        - Tables that use autoincrement, the data should be identical on all replicas for that.
+        - Sometimes there might be side effects (triggers, stored procedures, user-defined functions).
+    - The leader can replace any nondeterministic function call with a fixed return vaule, but there are many edge cases and other replication methods are preferred.
+    - Statement-based replication was used in MySQL before 5.1, but now MySQL uses row-based replication.
+- _Write-ahead log replication_
+    - Storage engines for databases keep every write appended to a log (Chapter 3 of this book), so that the index can be restored after a crash. We can utilize the same mechanism to build a replica on another node. So the leader after writing the log to a disk, also sends it to its followers.
+    - This approach is used in PostgreSQL and Oracle. Downside of this approach is that WAL describes the data on the very low level and it makes replication closely tied to a storage engine. For this reason, if you want to upgrade the database, WAL might require mandatory downtime.
 
 
