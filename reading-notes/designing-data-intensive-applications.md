@@ -360,8 +360,24 @@ There also were RPCs (remote procedure calls) before web services.
         - Sometimes there might be side effects (triggers, stored procedures, user-defined functions).
     - The leader can replace any nondeterministic function call with a fixed return vaule, but there are many edge cases and other replication methods are preferred.
     - Statement-based replication was used in MySQL before 5.1, but now MySQL uses row-based replication.
-- _Write-ahead log replication_
-    - Storage engines for databases keep every write appended to a log (Chapter 3 of this book), so that the index can be restored after a crash. We can utilize the same mechanism to build a replica on another node. So the leader after writing the log to a disk, also sends it to its followers.
+- Write-ahead log (WAL) shipping
+	- Storage engines usually keep a log with every write:
+		- Log-structures storage engines (SSTables and LSM-Trees) use this log as a storage. Log segements are compacted and garbage-collected in a background.
+		- B-tree overwrite every individual disk block, but it still keeps a WAL, because every write is first written to WAL so that index can be restored after crash.
+	- In the same fasion we keep a WAL on the leader and it sends it over the network to the followers.
+	- The problem with this approach is that our WAL describes the data on a very low level, so it's coupled to the storage engine.
+	- We cannot do a db updgrade without downtime. If we weren't coupled to the db engine, then we would upgrade all the follower nodes and do a failover on the leader. 
     - This approach is used in PostgreSQL and Oracle. Downside of this approach is that WAL describes the data on the very low level and it makes replication closely tied to a storage engine. For this reason, if you want to upgrade the database, WAL might require mandatory downtime.
-
+- Logical log (row-based) replication
+	- Logical log allows us to decouple from the storage engine by keeping different formats for replication.
+	- It sends records:
+		- For inserting, record contains all the values of new columns.
+		- For deleting it contains enough information to uniquely identify the row (usually a primary key)
+		- For updating a record contains both the id and new data (at least for the columns that were modified).
+	- When updating multiple rows, each row update will be represented as separate record.
+	- This approach allows us to run different versions of DB and perform upgrades without downtime. It also more convenient for external systems that want to read the contents of the db, e.g data warehouses
+- Trigger-based replication
+	- In some cases you need more flexibility, e.g replicating only subset of data or doing some conflict resolution.
+	- In those cases you can use triggers or stored procedures provided by databases to execute some custom code when the data changes.
+	- This kind of replication more bug prone and has more overhead, but it's still sometimes useful due to its flexibility.
 
