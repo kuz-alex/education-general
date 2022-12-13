@@ -310,7 +310,7 @@ There also were RPCs (remote procedure calls) before web services.
 
 - Keeping a copy off the same data on different nodes, potentially in different locations.
 
-## 5.1 Leaders and Followers
+## Leaders and Followers
 - Replication is keeping a copy of the same data on multiple machines.
     - Possible to store data close to users geographically.
     - When a single machine fails, the system keeps going.
@@ -381,3 +381,17 @@ There also were RPCs (remote procedure calls) before web services.
 	- In those cases you can use triggers or stored procedures provided by databases to execute some custom code when the data changes.
 	- This kind of replication more bug prone and has more overhead, but it's still sometimes useful due to its flexibility.
 
+- Problems with replication lag
+	- Replication is a good way to tolerate node failures, other reasons for replication is scalability (multiple machines can handle more requests) and latency (serving geographically closer to the user)
+	- In leader based replication is usually all writes go through a single leader node, but read queries can be served from any replica. Application with mostly reads than writes are common pattern on the web.
+	- Adding more followers for serving read-only request realistically works only with asynchronous replication (otherwise a single node failure would make our whole system unavailable for writing).
+	- But if we're reading from an async. follower, we may see outdated information if the follower has fallen behind. This is called replication lag.
+	- Replication lag can be very small (and eventually the follower will catch up, which is called eventual consistency). But when our server is operating under high load or if the network is unstable the lag can increase to several seconds or even minutes.
+	- Problems that occur when replication lag happens:
+		- Reading your own writes. E.g user edits his own profile and then refreshes the page to see the updates. With asynchronous replication the read request can be served from the stale replica and it would look like submitted data was lost. In this situation we need read-after-write (read-your-writes) consistency. Here's how to implement it in the leader-based replication:
+			- If a user edits his own profile, we can configure the leader to serve read requests to the user for his own profile, so user always gets updated information.
+			- When a user can change multiple things this approach won't work as most things would have to be read from the server (negating the benefit of read scaling). In this case we can track the time of the last update and, for one minute after the update, make all reads from the leader. You can also monitor the followers and prevent reads from the followers that are more than 1 min behind the leader.
+			- The client can remember the logical timestamp of its most recent write - then the system can ensure that the request is served from the updated replica (outdated replica can bypass the request or wait til replica caught up).
+		- There are more difficulties if your replicas are distributed across multiple DC, any request that needs to be served by the leader should be routed to DC that contains the leader.
+		- Read-after-write consistency can be tricker if you account for multiple device (cross-device read-after-write).
+- Monotonic reads.
