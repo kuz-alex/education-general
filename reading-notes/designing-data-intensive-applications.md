@@ -381,17 +381,33 @@ There also were RPCs (remote procedure calls) before web services.
 	- In those cases you can use triggers or stored procedures provided by databases to execute some custom code when the data changes.
 	- This kind of replication more bug prone and has more overhead, but it's still sometimes useful due to its flexibility.
 
-- Problems with replication lag
-	- Replication is a good way to tolerate node failures, other reasons for replication is scalability (multiple machines can handle more requests) and latency (serving geographically closer to the user)
-	- In leader based replication is usually all writes go through a single leader node, but read queries can be served from any replica. Application with mostly reads than writes are common pattern on the web.
-	- Adding more followers for serving read-only request realistically works only with asynchronous replication (otherwise a single node failure would make our whole system unavailable for writing).
-	- But if we're reading from an async. follower, we may see outdated information if the follower has fallen behind. This is called replication lag.
-	- Replication lag can be very small (and eventually the follower will catch up, which is called eventual consistency). But when our server is operating under high load or if the network is unstable the lag can increase to several seconds or even minutes.
-	- Problems that occur when replication lag happens:
-		- Reading your own writes. E.g user edits his own profile and then refreshes the page to see the updates. With asynchronous replication the read request can be served from the stale replica and it would look like submitted data was lost. In this situation we need read-after-write (read-your-writes) consistency. Here's how to implement it in the leader-based replication:
-			- If a user edits his own profile, we can configure the leader to serve read requests to the user for his own profile, so user always gets updated information.
-			- When a user can change multiple things this approach won't work as most things would have to be read from the server (negating the benefit of read scaling). In this case we can track the time of the last update and, for one minute after the update, make all reads from the leader. You can also monitor the followers and prevent reads from the followers that are more than 1 min behind the leader.
-			- The client can remember the logical timestamp of its most recent write - then the system can ensure that the request is served from the updated replica (outdated replica can bypass the request or wait til replica caught up).
-		- There are more difficulties if your replicas are distributed across multiple DC, any request that needs to be served by the leader should be routed to DC that contains the leader.
-		- Read-after-write consistency can be tricker if you account for multiple device (cross-device read-after-write).
+### Problems with replication lag
+- Replication is a good way to tolerate node failures, other reasons for replication is scalability (multiple machines can handle more requests) and latency (serving geographically closer to the user)
+- In leader based replication is usually all writes go through a single leader node, but read queries can be served from any replica. Application with mostly reads than writes are common pattern on the web.
+- Adding more followers for serving read-only request realistically works only with asynchronous replication (otherwise a single node failure would make our whole system unavailable for writing).
+- But if we're reading from an async. follower, we may see outdated information if the follower has fallen behind. This is called replication lag.
+- Replication lag can be very small (and eventually the follower will catch up, which is called eventual consistency). But when our server is operating under high load or if the network is unstable the lag can increase to several seconds or even minutes.
+- Problems that occur when replication lag happens:
+    - Reading your own writes. E.g user edits his own profile and then refreshes the page to see the updates. With asynchronous replication the read request can be served from the stale replica and it would look like submitted data was lost. In this situation we need read-after-write (read-your-writes) consistency. Here's how to implement it in the leader-based replication:
+        - If a user edits his own profile, we can configure the leader to serve read requests to the user for his own profile, so user always gets updated information.
+        - When a user can change multiple things this approach won't work as most things would have to be read from the server (negating the benefit of read scaling). In this case we can track the time of the last update and, for one minute after the update, make all reads from the leader. You can also monitor the followers and prevent reads from the followers that are more than 1 min behind the leader.
+        - The client can remember the logical timestamp of its most recent write - then the system can ensure that the request is served from the updated replica (outdated replica can bypass the request or wait til replica caught up).
+    - There are more difficulties if your replicas are distributed across multiple DC, any request that needs to be served by the leader should be routed to DC that contains the leader.
+    - Read-after-write consistency can be tricker if you account for multiple device (cross-device read-after-write).
 - Monotonic reads.
+	- When working with multiple replicas the followers are updated at different times. If a user refreshes the page, he can read a freshly written record from one machine and after another quick refresh he can ask this record from a machine where it doesn't yet exist. So it'll look like moving backward in time, you read something and on the second request it's not exist yet.
+	- To avoid it we can make sure that a single user always reads from a particular replica, e.g we can select replica based on the hash of a user id. And when the node is down, only then we redirect user to a different replica. Monotonic reads is the guarantee that this anomaly won't happen.
+- Consistent Prefix Reads
+	- Imagine we have a dialog between users on a forum, a question and an answer. If an observer requests messages from two asynchonous followers, he may receive an answer (from updated replica) but not receive the actual question (bc another replica temporary outdated).
+	- To solve this kind of anomaly we need a guarantee: consistent prefix reads. This guarantee says that if a sequence of writes happens in a certain order, then anyone reading those writes will see them appear in the same order.
+	- This is a particular problem in sharded databases, there are ways to ensure consistency, but in many distributed dbs different shards operate independently.
+	- To solve this we could ensure that related to each other writes are written to the same partition (not always possible to do efficiently). Or there are algorithms that explicityly track casual dependencies (will be later in the book).
+
+### Multi-Leader Replication
+This kind of replication is not really suited for a single datacenter (not much benefits), but there are scenarios where it makes sense:
+- _Multi-datacenter opreation_. Within each datacenter a regular leader-follower replication is used; between datacenters, each datacenter's leader replicates its changes to the leaders in other DCs.
+    - Performance. If we have multiple datacenters then it makes sense to put leader in each datacenter, so we don't lose benefits of DCs being closer to the users (a single leader in a particular DB would become a bottleneck for writes).
+    - Tolerance of datacenter outages. When a leader fails each DC continues operate independently of the others, and replication catches up when the failed datacenter comes back online (in a single-leader configuration failover can promote a follower in another DC to be the leader).
+    - Tolerance of network problems. Traffic between datacenters usually goes over public internet and less reliable than network within datacenter. Single-leader configurations are very sensible to those problems and multi-leader configurations have advantage.
+
+The big disadvantage of a multi-leader replication is that multiple writes can be handled by different leaders and we need to perform additional confilict resolution. Also not all databases can handle autoincrements, triggers and integrity constraints with multi-leader replication. So when possible it's should be avoided.
